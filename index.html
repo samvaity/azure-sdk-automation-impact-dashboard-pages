@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Azure SDK Automation Impact</title>
+  <style>
+    :root { color-scheme: light; font-family: "Segoe UI", system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #eef2f8; color: #17202a; }
+    main { max-width: 1040px; margin: 0 auto; padding: 32px; }
+    header { color: white; background: linear-gradient(135deg, #0a3d75, #0078d4); border-radius: 16px; padding: 30px 34px; }
+    h1 { margin: 0 0 8px; }
+    h2 { color: #0a3d75; margin-top: 34px; }
+    .notice { margin: 20px 0; padding: 14px 18px; background: #fff4ce; border-left: 5px solid #ffb900; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .card { background: white; border: 1px solid #dbe4ed; border-radius: 12px; padding: 20px; }
+    .metric { color: #005a9e; font-size: 30px; font-weight: 750; }
+    .label { color: #536779; margin-top: 4px; }
+    .comparison { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
+    .arrow { color: #107c10; font-size: 28px; font-weight: 700; }
+    footer { margin-top: 36px; color: #536779; font-size: 13px; }
+    @media (max-width: 640px) {
+      main { padding: 18px; }
+      .comparison { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); justify-self: center; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Azure SDK Automation Impact</h1>
+    <div>Aggregate process measurements through Oct 14, 2026</div>
+  </header>
+
+  <div class="notice"><strong>Public aggregate view:</strong> raw evidence, pull-request details, telemetry, and architect-level drilldowns remain in private artifacts and the Azure Workbook.</div>
+
+  <h2>Data-plane review routing</h2>
+  <div class="comparison">
+    <section class="card">
+      <div class="metric">15.8 hours</div>
+      <div class="label">P50 assignment before activation</div>
+    </section>
+    <div class="arrow">→</div>
+    <section class="card">
+      <div class="metric">5 seconds</div>
+      <div class="label">P50 assignment after activation</div>
+    </section>
+  </div>
+  <div class="grid">
+    <section class="card"><div class="metric">22</div><div class="label">observed treatment requests</div></section>
+    <section class="card"><div class="metric">3</div><div class="label">requests reaching architecture signoff</div></section>
+    <section class="card"><div class="metric">3</div><div class="label">requests still open</div></section>
+  </div>
+
+  <h2>Protected-label enforcement</h2>
+  <div class="grid">
+    <section class="card"><div class="metric">6,934</div><div class="label">legacy workflow runs measured</div></section>
+    <section class="card"><div class="metric">98.8%</div><div class="label">operational success</div></section>
+    <section class="card"><div class="metric">31</div><div class="label">observed unauthorized applications reversed</div></section>
+  </div>
+
+  <h2>Package-name approval</h2>
+  <div class="grid">
+    <section class="card"><div class="metric">61</div><div class="label">new review cycles after activation</div></section>
+    <section class="card"><div class="metric">25</div><div class="label">completed cycles</div></section>
+    <section class="card"><div class="metric">2.5 days</div><div class="label">P50 time to full approval</div></section>
+  </div>
+
+  <footer>This page intentionally contains aggregate data only. GitHub Pages is public and is not an access-control boundary.</footer>
+</main>
+</body>
+</html>
