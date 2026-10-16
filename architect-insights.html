@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>Azure SDK Architect Interaction Patterns</title>
+  <style>
+    :root { color-scheme: light; font-family: "Segoe UI", system-ui, Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #eef2f8; color: #17202a; }
+    main { max-width: 1180px; margin: 0 auto; padding: 32px; }
+    .hero { background: linear-gradient(135deg, #0a3d75 0%, #0078d4 100%); color: #fff; border-radius: 16px; padding: 32px 36px; margin-bottom: 24px; box-shadow: 0 8px 24px #0a3d7533; }
+    .hero h1 { margin: 0 0 8px; font-size: 32px; letter-spacing: -0.01em; }
+    .hero .subtle { color: #dceaff; }
+    .report-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #ffffff44; font-size: 13px; color: #dceaff; }
+    .activation-line { color: #536779; font-size: 13px; margin: -4px 0 18px; }
+    .banner { background: #fff4ce; border-left: 5px solid #ffb900; padding: 14px 18px; margin: 22px 0; border-radius: 0 8px 8px 0; }
+    h2 { margin-top: 42px; border-bottom: 1px solid #d8e1eb; padding-bottom: 8px; color: #0a3d75; }
+    h3 { margin-top: 0; }
+    p { line-height: 1.5; }
+    .subtle { color: #536779; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; }
+    .card, .story { background: white; border: 1px solid #dbe4ed; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px #0a3d7514; }
+    .story { margin: 16px 0; }
+    .metric { font-size: 32px; font-weight: 750; color: #005a9e; }
+    .label { color: #536779; margin-top: 3px; }
+    .before-after { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 14px; }
+    .period { background: #f8fafc; border: 1px solid #dbe4ed; border-radius: 8px; padding: 16px; }
+    .arrow { align-self: center; color: #107c10; font-size: 28px; font-weight: 700; }
+    .good { color: #107c10; font-weight: 650; }
+    .story-callout { background: #eef7ee; border-left: 5px solid #107c10; padding: 16px 18px; margin: 20px 0; font-size: 18px; line-height: 1.45; border-radius: 0 8px 8px 0; }
+    .split { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 20px; align-items: start; }
+    .chart { margin: 18px 0; background: #fff; border: 1px solid #dbe4ed; border-radius: 8px; padding: 14px; overflow-x: auto; }
+    .chart figcaption { font-weight: 650; margin-bottom: 6px; }
+    .chart-note { color: #536779; font-size: 13px; margin: 4px 0 10px; }
+    .chart svg { width: 100%; min-width: 620px; height: auto; }
+    .chart text { font: 12px "Segoe UI", Arial, sans-serif; fill: #34495e; }
+    .chart .bar-value { font-weight: 700; fill: #17202a; }
+    .funnel-row, .backlog-row { display: grid; grid-template-columns: 145px 1fr 32px; gap: 10px; align-items: center; margin: 12px 0; }
+    .funnel-row { grid-template-columns: 190px 1fr; }
+    .funnel-label { display: flex; gap: 8px; align-items: baseline; }
+    .funnel-label strong { font-size: 22px; color: #005a9e; min-width: 34px; }
+    .track { height: 18px; background: #e8eef4; border-radius: 9px; overflow: hidden; }
+    .fill { height: 100%; background: #0078d4; border-radius: 9px; }
+    .fill.complete { background: #107c10; }
+    .backlog-fill { background: #d83b01; }
+    .target-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 18px 0; }
+    .target-card { background: #f8fafc; border: 1px solid #dbe4ed; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px; }
+    .target-card strong { color: #005a9e; font-size: 26px; }
+    .target-card small { color: #536779; }
+    .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+    .proved, .unproved { border-radius: 8px; padding: 16px; }
+    .proved { background: #eef7ee; border: 1px solid #bad7b8; }
+    .unproved { background: #fff4ce; border: 1px solid #e5c365; }
+    .proved h4, .unproved h4 { margin: 0 0 8px; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e4e9ef; }
+    th { background: #eef3f8; }
+    .number { text-align: right; font-variant-numeric: tabular-nums; }
+    .rule { border-left: 4px solid #0078d4; padding: 2px 0 2px 14px; margin: 12px 0; }
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 16px; }
+    .method-grid h3 { color: #0a3d75; margin-bottom: 6px; }
+    footer { margin-top: 40px; color: #536779; font-size: 13px; }
+    a { color: #005a9e; }
+    .table-scroll { overflow-x: auto; }
+    code { overflow-wrap: anywhere; }
+    @media (max-width: 720px) {
+      main { padding: 18px; }
+      .before-after { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); justify-self: center; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .target-grid { grid-template-columns: 1fr; }
+    }
+    .headline-stat { display: flex; align-items: center; gap: 22px; background: #f0f7ff; border: 1px solid #bcdcff; border-radius: 10px; padding: 18px 22px; margin: 18px 0; }
+    .headline-stat .big { font-size: 40px; font-weight: 800; color: #005a9e; line-height: 1; }
+    .headline-stat .big small { display: block; font-size: 13px; font-weight: 600; color: #536779; margin-top: 4px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <h1>Architect Interaction Patterns</h1>
+    <div class="subtle">A public extension to the Azure SDK Automation impact dashboard.</div>
+    <div class="report-meta">
+      <span><strong>Evidence through:</strong> Oct 16, 2026</span>
+      <span><strong>Refreshed:</strong> Oct 16, 2026</span>
+      <span><strong>Period:</strong> Cumulative since Sep 22, 2026</span>
+    </div>
+  </div>
+
+  <p><a href="index.html">Back to the main impact dashboard</a></p>
+
+  <div class="story-callout"><strong>How to use this view:</strong> look for workload, aging, and review-flow patterns that suggest where automation, clearer context, or better balancing could reduce waiting. Elapsed time is not a measure of an architect's effort or performance.</div>
+
+  <h2>Observed interaction summary</h2>
+  <div class="grid">
+    <section class="card">
+      <div class="metric">13</div>
+      <div class="label">individual assignments observed</div>
+    </section>
+    <section class="card">
+      <div class="metric">5</div>
+      <div class="label">signoffs attributed</div>
+    </section>
+    <section class="card">
+      <div class="metric">4</div>
+      <div class="label">open assigned reviews</div>
+    </section>
+    <section class="card">
+      <div class="metric">3</div>
+      <div class="label">completed assignment-to-signoff samples</div>
+    </section>
+  </div>
+
+  <h2>Per-architect interaction data</h2>
+  <section class="story">
+    <p>GitHub handles are shown as plain text. Assignment and signoff are separate interactions, and the person applying signoff may differ from the assigned reviewer. Small sample sizes can move medians sharply, so compare the sample count with every timing value.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>GitHub handle</th>
+            <th class="number">Assigned</th>
+            <th class="number">Signoffs</th>
+            <th class="number">Open assigned</th>
+            <th class="number">Completed samples</th>
+            <th class="number">P50 assignment to signoff</th>
+            <th class="number">P50 request to signoff</th>
+            <th class="number">Oldest open</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+      <td><code>heaths</code></td>
+      <td class="number">1</td>
+      <td class="number">3</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">2.4 hours</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>JoshLove-msft</code></td>
+      <td class="number">1</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">30.7 minutes</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>helen229</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">6.8 minutes</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>jeremymeng</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">7.2 days</td>
+    </tr><tr>
+      <td><code>jhendrixMSFT</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">7.0 days</td>
+    </tr><tr>
+      <td><code>JonathanGiles</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">1.4 days</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>kashifkhan</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>LarryOsterman</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">7.1 days</td>
+    </tr><tr>
+      <td><code>m-nash</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>maorleger</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>qiaozha</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>samvaity</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+      <td class="number">3.9 hours</td>
+    </tr><tr>
+      <td><code>tjprescott</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">1.4 hours</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr><tr>
+      <td><code>xirzec</code></td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">30.6 minutes</td>
+      <td class="number">Unavailable</td>
+      <td class="number">Unavailable</td>
+    </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <h2>What can be learned</h2>
+  <section class="story">
+    <div class="method-grid">
+      <div>
+        <h3>Workload distribution</h3>
+        <p>Assignments and open work show whether review demand is concentrated and where balancing or additional coverage may help.</p>
+      </div>
+      <div>
+        <h3>Waiting patterns</h3>
+        <p>Assignment-to-signoff timing can identify review paths worth examining, but it includes service-team responses, PR readiness, and review complexity.</p>
+      </div>
+      <div>
+        <h3>Automation opportunities</h3>
+        <p>Repeatedly slow paths can be inspected for missing context, manual coordination, or routine checks that automation could prepare earlier.</p>
+      </div>
+      <div>
+        <h3>Evidence limits</h3>
+        <p>GitHub events measure workflow elapsed time, not cognitive effort. Raw events and pull-request identifiers remain outside the public site.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Public architect interaction extension. Handles are plain text and do not create GitHub mentions.</footer>
+</main>
+</body>
+</html>
