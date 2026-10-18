@@ -85,8 +85,8 @@
     <h1>Azure SDK Automation: Process Impact Review</h1>
     <div class="subtle">Aggregate report covering data-plane review routing, protected-label enforcement, and package-name approval.</div>
     <div class="report-meta">
-      <span><strong>Evidence through:</strong> Oct 17, 2026</span>
-      <span><strong>Refreshed:</strong> Oct 17, 2026</span>
+      <span><strong>Evidence through:</strong> Oct 18, 2026</span>
+      <span><strong>Refreshed:</strong> Oct 18, 2026</span>
       <span><strong>Source:</strong> Azure/azure-rest-api-specs workflow and PR history</span>
       <span><strong>Status:</strong> Ongoing measurement</span>
     </div>
@@ -133,7 +133,7 @@
       </div>
     </div>
     <p class="good">The typical completed routing wait moved from 15.8 hours to 5 seconds.</p>
-    <p><strong>End-to-end review:</strong> 5 of 25 treatment requests reached signoff. 5 remain open; the oldest has been open 11.1 days.</p>
+    <p><strong>End-to-end review:</strong> 5 of 25 treatment requests reached signoff. 5 remain open; the oldest has been open 12.1 days.</p>
     <div class="split">
       <div>
         <h3>Treatment funnel</h3>
@@ -150,7 +150,7 @@
       </div>
       <div>
         <h3>Open architecture-review backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:25%"></div></div><strong>1</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>4</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:25%"></div></div><strong>1</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>4</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div></div>
         <p>5 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
       </div>
     </div>
@@ -224,7 +224,7 @@
     <p>How reliably does automation enforce approval policy, and can the legacy baseline survive the move into the Automation App?</p>
     <div class="grid">
       <div class="period"><div class="metric">98.8%</div><div>legacy operational success</div><p>6977 succeeded and 86 failed. Skipped or cancelled runs are not silently treated as failures.</p></div>
-      <div class="period"><div class="metric">271</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
+      <div class="period"><div class="metric">272</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
       <div class="period"><div class="metric">32</div><div>unauthorized attempts reversed</div><p>Across 21 pull requests.</p></div>
       <div class="period"><div class="metric">14</div><div>configuration revisions retained</div><p>Workflow first committed Jul 20, 2026.</p></div>
     </div>
@@ -367,10 +367,10 @@
       <td class="number">28 seconds</td>
     </tr><tr>
       <td>validateLabels</td>
-      <td class="number">5804</td>
+      <td class="number">5805</td>
       <td class="number">4576</td>
       <td class="number">93.0%</td>
-      <td class="number">885</td>
+      <td class="number">886</td>
       <td class="number">23 seconds</td>
     </tr></tbody>
     </table>
