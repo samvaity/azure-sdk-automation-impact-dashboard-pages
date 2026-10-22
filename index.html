@@ -85,8 +85,8 @@
     <h1>Azure SDK Automation: Process Impact Review</h1>
     <div class="subtle">Aggregate report covering data-plane review routing, protected-label enforcement, and package-name approval.</div>
     <div class="report-meta">
-      <span><strong>Evidence through:</strong> Oct 21, 2026</span>
-      <span><strong>Refreshed:</strong> Oct 21, 2026</span>
+      <span><strong>Evidence through:</strong> Oct 22, 2026</span>
+      <span><strong>Refreshed:</strong> Oct 22, 2026</span>
       <span><strong>Source:</strong> Azure/azure-rest-api-specs workflow and PR history</span>
       <span><strong>Status:</strong> Ongoing measurement</span>
     </div>
@@ -105,7 +105,7 @@
       <p>6,977 succeeded (98.8% of success/failure outcomes).</p>
     </section>
     <section class="card">
-      <div class="metric">68</div>
+      <div class="metric">69</div>
       <div class="label">new package-name review cycles after activation</div>
       <p>27 completed; 15 still open.</p>
     </section>
@@ -133,7 +133,7 @@
       </div>
     </div>
     <p class="good">The typical completed routing wait moved from 15.8 hours to 5 seconds.</p>
-    <p><strong>End-to-end review:</strong> 5 of 29 treatment requests reached signoff. 7 remain open; the oldest has been open 15.1 days.</p>
+    <p><strong>End-to-end review:</strong> 6 of 29 treatment requests reached signoff. 6 remain open; the oldest has been open 16.1 days.</p>
     <div class="split">
       <div>
         <h3>Treatment funnel</h3>
@@ -144,14 +144,14 @@
         <div class="funnel-label"><strong>19</strong><span>reviewer team assigned</span></div>
         <div class="track"><div class="fill " style="width:65.51724137931035%"></div></div>
       </div><div class="funnel-row">
-        <div class="funnel-label"><strong>5</strong><span>architecture signoff</span></div>
-        <div class="track"><div class="fill complete" style="width:17.24137931034483%"></div></div>
+        <div class="funnel-label"><strong>6</strong><span>architecture signoff</span></div>
+        <div class="track"><div class="fill complete" style="width:20.689655172413794%"></div></div>
       </div></div>
       </div>
       <div>
         <h3>Open architecture-review backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>1</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:66.66666666666666%"></div></div><strong>2</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>1</strong></div></div>
-        <p>7 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:50%"></div></div><strong>1</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>2</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>2</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:50%"></div></div><strong>1</strong></div></div>
+        <p>6 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
       </div>
     </div>
     <figure class="chart">
@@ -202,8 +202,8 @@
         <text x="674.6666666666667" y="270" text-anchor="middle">Oct 12</text>
         <rect x="732.2222222222223" y="172.66666666666669" width="24" height="69.33333333333333" rx="3" fill="#0078d4"><title>4 opened</title></rect>
         <text x="744.2222222222223" y="166.66666666666669" text-anchor="middle" class="bar-value">4</text>
-        <rect x="760.2222222222223" y="242" width="24" height="0" rx="3" fill="#107c10"><title>0 completed</title></rect>
-        <text x="772.2222222222223" y="236" text-anchor="middle" class="bar-value">0</text>
+        <rect x="760.2222222222223" y="224.66666666666666" width="24" height="17.333333333333332" rx="3" fill="#107c10"><title>1 completed</title></rect>
+        <text x="772.2222222222223" y="218.66666666666666" text-anchor="middle" class="bar-value">1</text>
         <text x="758.2222222222223" y="270" text-anchor="middle">Oct 19</text>
       <g class="legend"><rect x="48" y="286" width="12" height="12" fill="#0078d4"/><text x="66" y="296">Opened that week</text><rect x="188" y="286" width="12" height="12" fill="#107c10"/><text x="206" y="296">Completed that week</text></g>
     </svg>
@@ -215,7 +215,7 @@
       </div>
       <div class="unproved">
         <h4>Evidence still required</h4>
-        <p>Only 4 treatment reviews have a complete request, assignment, and signoff trace. That is not enough to claim architects review faster or save hours.</p>
+        <p>Only 5 treatment reviews have a complete request, assignment, and signoff trace. That is not enough to claim architects review faster or save hours.</p>
       </div>
     </div>
     <p><strong>Evidence basis:</strong> 6 matched assignments before activation and 19 after activation. End-to-end signoff is reported separately from routing latency.</p>
@@ -229,30 +229,30 @@
     <p>How reliably does automation enforce approval policy, and can the legacy baseline survive the move into the Automation App?</p>
     <div class="grid">
       <div class="period"><div class="metric">98.8%</div><div>legacy operational success</div><p>6977 succeeded and 86 failed. Skipped or cancelled runs are not silently treated as failures.</p></div>
-      <div class="period"><div class="metric">312</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
-      <div class="period"><div class="metric">32</div><div>unauthorized attempts reversed</div><p>Across 21 pull requests.</p></div>
+      <div class="period"><div class="metric">338</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
+      <div class="period"><div class="metric">33</div><div>unauthorized attempts reversed</div><p>Across 22 pull requests.</p></div>
       <div class="period"><div class="metric">15</div><div>configuration revisions retained</div><p>Workflow first committed Jul 20, 2026.</p></div>
     </div>
     <div class="headline-stat">
-      <div class="big">32<small>unauthorized bypass attempts caught</small></div>
-      <div class="big">85.7%<small>of affected PRs later merged after correction</small></div>
+      <div class="big">33<small>unauthorized bypass attempts caught</small></div>
+      <div class="big">81.8%<small>of affected PRs later merged after correction</small></div>
     </div>
     <div class="split">
       <div>
         <h3>Unauthorized protected-label events by policy</h3>
-        <div class="backlog"><div class="backlog-row"><span>package-name approval labels</span><div class="track"><div class="fill" style="width:83.33333333333334%"></div></div><strong>10</strong></div><div class="backlog-row"><span>data-plane-review-signoff label</span><div class="track"><div class="fill" style="width:41.66666666666667%"></div></div><strong>5</strong></div><div class="backlog-row"><span>Skip-ReleasePlan-Automation label</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>12</strong></div><div class="backlog-row"><span>breaking-change approval labels</span><div class="track"><div class="fill" style="width:41.66666666666667%"></div></div><strong>5</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span>package-name approval labels</span><div class="track"><div class="fill" style="width:83.33333333333334%"></div></div><strong>10</strong></div><div class="backlog-row"><span>data-plane-review-signoff label</span><div class="track"><div class="fill" style="width:41.66666666666667%"></div></div><strong>5</strong></div><div class="backlog-row"><span>Skip-ReleasePlan-Automation label</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>12</strong></div><div class="backlog-row"><span>breaking-change approval labels</span><div class="track"><div class="fill" style="width:41.66666666666667%"></div></div><strong>5</strong></div><div class="backlog-row"><span>other protected labels</span><div class="track"><div class="fill" style="width:8.333333333333332%"></div></div><strong>1</strong></div></div>
       </div>
       <div>
         <h3>PR outcome after correction</h3>
-        <div class="backlog"><div class="backlog-row"><span>later merged</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>18</strong></div><div class="backlog-row"><span>closed unmerged</span><div class="track"><div class="fill" style="width:11.11111111111111%"></div></div><strong>2</strong></div><div class="backlog-row"><span>still open</span><div class="track"><div class="fill" style="width:5.555555555555555%"></div></div><strong>1</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span>later merged</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>18</strong></div><div class="backlog-row"><span>closed unmerged</span><div class="track"><div class="fill" style="width:11.11111111111111%"></div></div><strong>2</strong></div><div class="backlog-row"><span>still open</span><div class="track"><div class="fill" style="width:11.11111111111111%"></div></div><strong>2</strong></div></div>
       </div>
     </div>
     <h3>Flagged attempts, month over month</h3>
     <p class="subtle">Every entry below was an unauthorized protected-label state that automation detected and reversed.</p>
-    <div class="backlog"><div class="backlog-row"><span>Jul 26</span><div class="track"><div class="fill" style="width:7.142857142857142%"></div></div><strong>1</strong></div><div class="backlog-row"><span>Aug 26</span><div class="track"><div class="fill" style="width:28.57142857142857%"></div></div><strong>4</strong></div><div class="backlog-row"><span>Sep 26</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>14</strong></div><div class="backlog-row"><span>Oct 26</span><div class="track"><div class="fill" style="width:92.85714285714286%"></div></div><strong>13</strong></div></div>
+    <div class="backlog"><div class="backlog-row"><span>Jul 26</span><div class="track"><div class="fill" style="width:7.142857142857142%"></div></div><strong>1</strong></div><div class="backlog-row"><span>Aug 26</span><div class="track"><div class="fill" style="width:28.57142857142857%"></div></div><strong>4</strong></div><div class="backlog-row"><span>Sep 26</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>14</strong></div><div class="backlog-row"><span>Oct 26</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>14</strong></div></div>
     <div class="proved">
       <h4>Supported finding</h4>
-      <p>32 unauthorized protected-label attempts were detected and reversed across 21 PRs. 18 affected PRs later continued to merge after correction.</p>
+      <p>33 unauthorized protected-label attempts were detected and reversed across 22 PRs. 18 affected PRs later continued to merge after correction.</p>
     </div>
     <p><strong>Proposed target:</strong> at least 99.5% execution success, 100% reversal of observed unauthorized actions, and no unauthorized protected state at merge.</p>
   </section>
@@ -264,29 +264,29 @@
     <p>How much review demand enters the process, how quickly does it finish, and how much old work was already waiting when the current workflow set became active?</p>
     <div class="grid">
       <div class="period"><div class="metric">15</div><div>observed carryover reviews at activation</div><p>2 later completed; 1 remain open.</p></div>
-      <div class="period"><div class="metric">68</div><div>new reviews after activation</div><p>27 completed; 15 are actively open.</p></div>
+      <div class="period"><div class="metric">69</div><div>new reviews after activation</div><p>27 completed; 15 are actively open.</p></div>
       <div class="period"><div class="metric">1.7 days</div><div>new-review P50 to full approval</div><p>Open reviews are excluded from this percentile and remain in backlog.</p></div>
       <div class="period"><div class="metric">10</div><div>observed unauthorized corrections</div><p>Derived only from durable warning evidence.</p></div>
     </div>
     <h3>How quickly the new cohort reaches full approval</h3>
-    <div class="target-grid"><div class="target-card"><strong>14.7%</strong><span>completed within 1d</span><small>10 of 68 new reviews</small></div><div class="target-card"><strong>25.0%</strong><span>completed within 3d</span><small>17 of 68 new reviews</small></div><div class="target-card"><strong>27.9%</strong><span>completed within 5d</span><small>19 of 68 new reviews</small></div></div>
+    <div class="target-grid"><div class="target-card"><strong>14.5%</strong><span>completed within 1d</span><small>10 of 69 new reviews</small></div><div class="target-card"><strong>24.6%</strong><span>completed within 3d</span><small>17 of 69 new reviews</small></div><div class="target-card"><strong>27.5%</strong><span>completed within 5d</span><small>19 of 69 new reviews</small></div></div>
     <div class="split">
       <div>
         <h3>Open package-name backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:12.5%"></div></div><strong>1</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:12.5%"></div></div><strong>1</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:62.5%"></div></div><strong>5</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>8</strong></div></div>
-        <p>15 new review cycles are on PRs that are still open. 8 have been open longer than 14 days.</p>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:44.44444444444444%"></div></div><strong>4</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>9</strong></div></div>
+        <p>15 new review cycles are on PRs that are still open. 9 have been open longer than 14 days.</p>
       </div>
       <div>
         <h3>Process funnel</h3>
         <div class="funnel"><div class="funnel-row">
-        <div class="funnel-label"><strong>68</strong><span>new review cycles</span></div>
+        <div class="funnel-label"><strong>69</strong><span>new review cycles</span></div>
         <div class="track"><div class="fill " style="width:100%"></div></div>
       </div><div class="funnel-row">
         <div class="funnel-label"><strong>27</strong><span>fully approved</span></div>
-        <div class="track"><div class="fill complete" style="width:39.705882352941174%"></div></div>
+        <div class="track"><div class="fill complete" style="width:39.130434782608695%"></div></div>
       </div><div class="funnel-row">
         <div class="funnel-label"><strong>19</strong><span>approved within 5 days</span></div>
-        <div class="track"><div class="fill complete" style="width:27.941176470588236%"></div></div>
+        <div class="track"><div class="fill complete" style="width:27.536231884057973%"></div></div>
       </div></div>
       </div>
     </div>
@@ -351,8 +351,8 @@
         <rect x="708" y="221.2" width="20.053333333333335" height="20.8" rx="3" fill="#107c10"><title>1 completed</title></rect>
         <text x="718.0266666666666" y="215.2" text-anchor="middle" class="bar-value">1</text>
         <text x="706" y="270" text-anchor="middle">Oct 12</text>
-        <rect x="746.6133333333333" y="221.2" width="20.053333333333335" height="20.8" rx="3" fill="#0078d4"><title>1 opened</title></rect>
-        <text x="756.64" y="215.2" text-anchor="middle" class="bar-value">1</text>
+        <rect x="746.6133333333333" y="200.4" width="20.053333333333335" height="41.6" rx="3" fill="#0078d4"><title>2 opened</title></rect>
+        <text x="756.64" y="194.4" text-anchor="middle" class="bar-value">2</text>
         <rect x="770.6666666666666" y="200.4" width="20.053333333333335" height="41.6" rx="3" fill="#107c10"><title>2 completed</title></rect>
         <text x="780.6933333333333" y="194.4" text-anchor="middle" class="bar-value">2</text>
         <text x="768.6666666666666" y="270" text-anchor="middle">Oct 19</text>
@@ -363,24 +363,24 @@
       <thead><tr><th>Workflow component</th><th class="number">Runs</th><th class="number">Successful</th><th class="number">Operational success</th><th class="number">Skipped</th><th class="number">P50 duration</th></tr></thead>
       <tbody><tr>
       <td>analyze</td>
-      <td class="number">2326</td>
-      <td class="number">2194</td>
-      <td class="number">94.3%</td>
+      <td class="number">2348</td>
+      <td class="number">2216</td>
+      <td class="number">94.4%</td>
       <td class="number">0</td>
-      <td class="number">2.5 minutes</td>
+      <td class="number">2.6 minutes</td>
     </tr><tr>
       <td>setStatus</td>
-      <td class="number">2174</td>
-      <td class="number">2126</td>
+      <td class="number">2196</td>
+      <td class="number">2147</td>
       <td class="number">97.8%</td>
       <td class="number">0</td>
       <td class="number">28 seconds</td>
     </tr><tr>
       <td>validateLabels</td>
-      <td class="number">6078</td>
+      <td class="number">6207</td>
       <td class="number">4580</td>
       <td class="number">93.0%</td>
-      <td class="number">1155</td>
+      <td class="number">1282</td>
       <td class="number">22 seconds</td>
     </tr></tbody>
     </table>
