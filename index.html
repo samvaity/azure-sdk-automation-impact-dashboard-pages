@@ -85,8 +85,8 @@
     <h1>Azure SDK Automation: Process Impact Review</h1>
     <div class="subtle">Aggregate report covering data-plane review routing, protected-label enforcement, and package-name approval.</div>
     <div class="report-meta">
-      <span><strong>Evidence through:</strong> Oct 24, 2026</span>
-      <span><strong>Refreshed:</strong> Oct 24, 2026</span>
+      <span><strong>Evidence through:</strong> Oct 25, 2026</span>
+      <span><strong>Refreshed:</strong> Oct 25, 2026</span>
       <span><strong>Source:</strong> Azure/azure-rest-api-specs workflow and PR history</span>
       <span><strong>Status:</strong> Ongoing measurement</span>
     </div>
@@ -133,7 +133,7 @@
       </div>
     </div>
     <p class="good">The typical completed routing wait moved from 15.8 hours to 5 seconds.</p>
-    <p><strong>End-to-end review:</strong> 8 of 30 treatment requests reached signoff. 5 remain open; the oldest has been open 18.1 days.</p>
+    <p><strong>End-to-end review:</strong> 8 of 30 treatment requests reached signoff. 4 remain open; the oldest has been open 19.1 days.</p>
     <div class="split">
       <div>
         <h3>Treatment funnel</h3>
@@ -150,8 +150,8 @@
       </div>
       <div>
         <h3>Open architecture-review backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:50%"></div></div><strong>1</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>2</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>2</strong></div></div>
-        <p>5 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:50%"></div></div><strong>1</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:50%"></div></div><strong>1</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>2</strong></div></div>
+        <p>4 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
       </div>
     </div>
     <figure class="chart">
@@ -273,7 +273,7 @@
     <div class="split">
       <div>
         <h3>Open package-name backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>3</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>9</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:22.22222222222222%"></div></div><strong>2</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>3</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>9</strong></div></div>
         <p>14 new review cycles are on PRs that are still open. 9 have been open longer than 14 days.</p>
       </div>
       <div>
@@ -363,24 +363,24 @@
       <thead><tr><th>Workflow component</th><th class="number">Runs</th><th class="number">Successful</th><th class="number">Operational success</th><th class="number">Skipped</th><th class="number">P50 duration</th></tr></thead>
       <tbody><tr>
       <td>analyze</td>
-      <td class="number">2379</td>
-      <td class="number">2245</td>
+      <td class="number">2382</td>
+      <td class="number">2248</td>
       <td class="number">94.4%</td>
       <td class="number">0</td>
       <td class="number">2.6 minutes</td>
     </tr><tr>
       <td>setStatus</td>
-      <td class="number">2227</td>
-      <td class="number">2178</td>
+      <td class="number">2230</td>
+      <td class="number">2181</td>
       <td class="number">97.8%</td>
       <td class="number">0</td>
       <td class="number">28 seconds</td>
     </tr><tr>
       <td>validateLabels</td>
-      <td class="number">6349</td>
+      <td class="number">6352</td>
       <td class="number">4586</td>
       <td class="number">93.0%</td>
-      <td class="number">1420</td>
+      <td class="number">1423</td>
       <td class="number">22 seconds</td>
     </tr></tbody>
     </table>
