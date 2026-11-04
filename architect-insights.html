@@ -61,6 +61,18 @@
     th { background: #eef3f8; }
     .number { text-align: right; font-variant-numeric: tabular-nums; }
     .rule { border-left: 4px solid #0078d4; padding: 2px 0 2px 14px; margin: 12px 0; }
+    .confidence-key { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+    .evidence-badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 650; white-space: nowrap; }
+    .evidence-badge.verified { color: #0b5a0b; background: #dff3df; }
+    .evidence-badge.likely { color: #704d00; background: #fff0c2; }
+    .evidence-badge.unknown { color: #5b6270; background: #e8ebef; }
+    .architect-evidence { background: #fff; border: 1px solid #dbe4ed; border-radius: 10px; margin: 12px 0; box-shadow: 0 2px 8px #0a3d7510; }
+    .architect-evidence summary { cursor: pointer; display: flex; justify-content: space-between; gap: 18px; padding: 16px 18px; font-weight: 650; }
+    .architect-evidence[open] summary { border-bottom: 1px solid #dbe4ed; }
+    .evidence-content { padding: 4px 18px 18px; }
+    .search-links { font-size: 13px; }
+    .evidence-table { min-width: 1080px; font-size: 13px; }
+    .evidence-table small { color: #536779; }
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 16px; }
     .method-grid h3 { color: #0a3d75; margin-bottom: 6px; }
     footer { margin-top: 40px; color: #536779; font-size: 13px; }
@@ -83,211 +95,570 @@
 <main>
   <div class="hero">
     <h1>Architect Interaction Patterns</h1>
-    <div class="subtle">A public extension to the Azure SDK Automation impact dashboard.</div>
+    <div class="subtle">An evidence extension to the Azure SDK Automation impact dashboard.</div>
     <div class="report-meta">
-      <span><strong>Evidence through:</strong> Oct 29, 2026</span>
-      <span><strong>Refreshed:</strong> Oct 29, 2026</span>
+      <span><strong>Evidence through:</strong> Nov 4, 2026</span>
+      <span><strong>Refreshed:</strong> Nov 4, 2026</span>
       <span><strong>Period:</strong> Cumulative since Sep 22, 2026</span>
     </div>
   </div>
 
   <p><a href="index.html">Back to the main impact dashboard</a></p>
 
-  <div class="story-callout"><strong>How to use this view:</strong> look for workload, aging, and review-flow patterns that suggest where automation, clearer context, or better balancing could reduce waiting. Elapsed time is not a measure of an architect's effort or performance.</div>
+  <div class="story-callout"><strong>How to use this view:</strong> look for workload and review-flow patterns that suggest where automation, clearer context, or better balancing could reduce waiting. Elapsed time is not a measure of an architect's effort or performance.</div>
 
   <h2>Observed interaction summary</h2>
   <div class="grid">
     <section class="card">
-      <div class="metric">18</div>
-      <div class="label">individual assignments observed</div>
+      <div class="metric">21</div>
+      <div class="label">directly assigned by Automation App</div>
     </section>
     <section class="card">
-      <div class="metric">12</div>
-      <div class="label">signoffs attributed</div>
+      <div class="metric">9</div>
+      <div class="label">valid signoffs applied</div>
     </section>
     <section class="card">
-      <div class="metric">1</div>
-      <div class="label">open assigned reviews</div>
-    </section>
-    <section class="card">
-      <div class="metric">8</div>
-      <div class="label">completed assignment-to-signoff samples</div>
+      <div class="metric">4</div>
+      <div class="label">open direct assignments</div>
     </section>
   </div>
 
   <h2>Per-architect interaction data</h2>
   <section class="story">
-    <p>GitHub handles are shown as plain text. Assignment and signoff are separate interactions, and the person applying signoff may differ from the assigned reviewer. Small sample sizes can move medians sharply, so compare the sample count with every timing value.</p>
+    <p>Direct assignment and signoff are separate interactions. The person applying signoff may differ from the reviewer selected by automation.</p>
+    <div class="rule"><strong>Directly assigned by Automation App:</strong> an individual review request created by <code>azure-sdk-automation</code> within 24 hours of <code>data-plane-review-requested</code>. Team requests, CODEOWNERS, manual requests, and later assignments are not included.</div>
+    <div class="rule"><strong>Valid signoffs applied:</strong> human applications of <code>data-plane-review-signoff</code>. A signoff is excluded when <code>azure-sdk-automation</code> removes it within two minutes, which is the operational rejection rule used by this report.</div>
+    <div class="rule"><strong>Median elapsed request-to-signoff:</strong> wall-clock time from the review-request label to a valid signoff. It includes waiting, PR changes, and coordination; it is not architect effort or time saved. Each value includes its completed sample count as <code>n</code>.</div>
     <div class="table-scroll">
       <table>
         <thead>
           <tr>
             <th>GitHub handle</th>
-            <th class="number">Assigned</th>
-            <th class="number">Signoffs</th>
-            <th class="number">Open assigned</th>
-            <th class="number">Completed samples</th>
-            <th class="number">P50 assignment to signoff</th>
-            <th class="number">P50 request to signoff</th>
-            <th class="number">Oldest open</th>
+            <th class="number">Directly assigned by Automation App</th>
+            <th class="number">Valid signoffs applied</th>
+            <th class="number">Median elapsed request-to-signoff</th>
           </tr>
         </thead>
         <tbody><tr>
       <td><code>heaths</code></td>
-      <td class="number">1</td>
-      <td class="number">6</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">1.4 days</td>
-      <td class="number">Unavailable</td>
-    </tr><tr>
-      <td><code>aayush3011</code></td>
-      <td class="number">0</td>
       <td class="number">2</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">48 seconds</td>
-      <td class="number">Unavailable</td>
+      <td class="number">6</td>
+      <td class="number">1.4 days (n=6)</td>
     </tr><tr>
       <td><code>JoshLove-msft</code></td>
       <td class="number">2</td>
-      <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">30.7 minutes</td>
-      <td class="number">Unavailable</td>
+      <td class="number">2</td>
+      <td class="number">22.8 minutes (n=2)</td>
     </tr><tr>
       <td><code>kashifkhan</code></td>
       <td class="number">1</td>
       <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">2.4 minutes</td>
-      <td class="number">Unavailable</td>
+      <td class="number">2.4 minutes (n=1)</td>
     </tr><tr>
-      <td><code>samvaity</code></td>
-      <td class="number">1</td>
-      <td class="number">1</td>
+      <td><code>JonathanGiles</code></td>
+      <td class="number">2</td>
       <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">7.1 days</td>
-      <td class="number">14.2 days</td>
-      <td class="number">Unavailable</td>
-    </tr><tr>
-      <td><code>helen229</code></td>
-      <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">6.8 minutes</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>m-nash</code></td>
       <td class="number">2</td>
       <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>maorleger</code></td>
+      <td class="number">2</td>
       <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">2.3 days</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>tjprescott</code></td>
+      <td class="number">2</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>xirzec</code></td>
       <td class="number">2</td>
       <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">2</td>
-      <td class="number">15.8 minutes</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>alzimmermsft</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>jeremymeng</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">14.2 days</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>jhendrixMSFT</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-    </tr><tr>
-      <td><code>JonathanGiles</code></td>
-      <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">1.4 days</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>LarryOsterman</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-      <td class="number">20.0 days</td>
-    </tr><tr>
-      <td><code>maorleger</code></td>
-      <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>qiaozha</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
-    </tr><tr>
-      <td><code>tjprescott</code></td>
-      <td class="number">1</td>
-      <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">1.4 hours</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>weidongxu-microsoft</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
-      <td class="number">0</td>
-      <td class="number">1</td>
-      <td class="number">1.8 days</td>
-      <td class="number">Unavailable</td>
-      <td class="number">Unavailable</td>
+      <td class="number">Unavailable (n=0)</td>
     </tr></tbody>
       </table>
     </div>
+  </section>
+
+  <h2>Linked pull-request evidence</h2>
+  <section class="story">
+    <p>Expand an architect to inspect exactly which pull requests contribute to the direct-assignment and valid-signoff counts. The broader GitHub searches are context only and can include team requests, CODEOWNERS, manual requests, and stale search state.</p>
+    <div class="confidence-key">
+      <span class="evidence-badge verified">Verified: directly observed event</span>
+      <span class="evidence-badge likely">Likely: supported inference, not used for a count</span>
+      <span class="evidence-badge unknown">Unknown: evidence does not identify the source</span>
+    </div>
+    <details class="architect-evidence">
+            <summary>
+              <span><code>heaths</code></span>
+              <span>2 direct assignments · 6 valid signoffs · 1 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Aheaths" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Aheaths" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46738" rel="noreferrer">#46738</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>MERGED</td>
+                <td>Sep 25, 2026, 08:55 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Sep 25, 2026, 11:22 PM UTC<br><small>Applied by heaths</small></td>
+                <td class="number">2.4 hours</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47018" rel="noreferrer">#47018</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>MERGED</td>
+                <td>Oct 5, 2026, 01:14 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 6, 2026, 11:10 PM UTC<br><small>Applied by heaths</small></td>
+                <td class="number">1.4 days</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46862" rel="noreferrer">#46862</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>CLOSED</td>
+                <td>Oct 7, 2026, 02:25 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 7, 2026, 02:25 PM UTC<br><small>Automation App requested heaths</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47112" rel="noreferrer">#47112</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>MERGED</td>
+                <td>Oct 7, 2026, 09:57 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 7, 2026, 11:22 PM UTC<br><small>Applied by heaths</small></td>
+                <td class="number">1.4 hours</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47300" rel="noreferrer">#47300</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>OPEN</td>
+                <td>Oct 16, 2026, 06:40 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 23, 2026, 09:24 PM UTC<br><small>Applied by heaths</small></td>
+                <td class="number">7.1 days</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47436" rel="noreferrer">#47436</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>OPEN</td>
+                <td>Oct 20, 2026, 02:47 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 21, 2026, 10:45 PM UTC<br><small>Applied by heaths</small></td>
+                <td class="number">1.8 days</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47646" rel="noreferrer">#47646</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>OPEN</td>
+                <td>Oct 27, 2026, 11:19 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 29, 2026, 05:20 PM UTC<br><small>Applied by heaths</small></td>
+                <td class="number">2.3 days</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47816" rel="noreferrer">#47816</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>OPEN</td>
+                <td>Nov 2, 2026, 11:36 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Nov 2, 2026, 11:36 AM UTC<br><small>Automation App requested heaths</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>JoshLove-msft</code></span>
+              <span>2 direct assignments · 2 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3AJoshLove-msft" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3AJoshLove-msft" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46693" rel="noreferrer">#46693</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>CLOSED</td>
+                <td>Sep 24, 2026, 09:34 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Sep 24, 2026, 09:34 PM UTC<br><small>Automation App requested JoshLove-msft</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46776" rel="noreferrer">#46776</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>MERGED</td>
+                <td>Sep 28, 2026, 03:55 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Sep 28, 2026, 04:26 PM UTC<br><small>Applied by JoshLove-msft</small></td>
+                <td class="number">30.7 minutes</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47341" rel="noreferrer">#47341</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>CLOSED</td>
+                <td>Oct 15, 2026, 09:59 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 15, 2026, 10:22 PM UTC<br><small>Applied by JoshLove-msft</small></td>
+                <td class="number">22.8 minutes</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47476" rel="noreferrer">#47476</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>CLOSED</td>
+                <td>Oct 21, 2026, 03:28 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 21, 2026, 03:29 AM UTC<br><small>Automation App requested JoshLove-msft</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>kashifkhan</code></span>
+              <span>1 direct assignments · 1 valid signoffs · 1 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Akashifkhan" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Akashifkhan" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47706" rel="noreferrer">#47706</a></td>
+                <td><span class="evidence-badge verified">Verified: valid signoff</span> <span class="evidence-badge unknown">Unknown: individual routing source</span></td>
+                <td>MERGED</td>
+                <td>Oct 28, 2026, 07:00 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Not directly assigned by the App</td>
+                <td>Oct 28, 2026, 07:03 PM UTC<br><small>Applied by kashifkhan</small></td>
+                <td class="number">2.4 minutes</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47675" rel="noreferrer">#47675</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>OPEN</td>
+                <td>Oct 29, 2026, 09:20 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 29, 2026, 09:20 PM UTC<br><small>Automation App requested kashifkhan</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>JonathanGiles</code></span>
+              <span>2 direct assignments · 0 valid signoffs · 1 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3AJonathanGiles" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3AJonathanGiles" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47018" rel="noreferrer">#47018</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 5, 2026, 01:14 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 5, 2026, 01:14 PM UTC<br><small>Automation App requested JonathanGiles</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" rel="noreferrer">#44527</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>OPEN</td>
+                <td>Oct 30, 2026, 07:02 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 30, 2026, 07:02 AM UTC<br><small>Automation App requested JonathanGiles</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>m-nash</code></span>
+              <span>2 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Am-nash" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Am-nash" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46412" rel="noreferrer">#46412</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Sep 26, 2026, 11:26 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Sep 26, 2026, 11:26 AM UTC<br><small>Automation App requested m-nash</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47646" rel="noreferrer">#47646</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>OPEN</td>
+                <td>Oct 27, 2026, 11:19 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 27, 2026, 11:19 AM UTC<br><small>Automation App requested m-nash</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>maorleger</code></span>
+              <span>2 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Amaorleger" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Amaorleger" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46873" rel="noreferrer">#46873</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 2, 2026, 09:05 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 2, 2026, 11:11 PM UTC<br><small>Automation App requested maorleger</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47761" rel="noreferrer">#47761</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 29, 2026, 10:02 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 29, 2026, 10:02 PM UTC<br><small>Automation App requested maorleger</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>tjprescott</code></span>
+              <span>2 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Atjprescott" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Atjprescott" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47112" rel="noreferrer">#47112</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 7, 2026, 09:57 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 7, 2026, 09:57 PM UTC<br><small>Automation App requested tjprescott</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47694" rel="noreferrer">#47694</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Nov 3, 2026, 06:00 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Nov 3, 2026, 06:01 AM UTC<br><small>Automation App requested tjprescott</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>xirzec</code></span>
+              <span>2 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Axirzec" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Axirzec" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46776" rel="noreferrer">#46776</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Sep 28, 2026, 03:55 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Sep 28, 2026, 03:55 PM UTC<br><small>Automation App requested xirzec</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47706" rel="noreferrer">#47706</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 28, 2026, 06:43 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 28, 2026, 06:43 PM UTC<br><small>Automation App requested xirzec</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>alzimmermsft</code></span>
+              <span>1 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Aalzimmermsft" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Aalzimmermsft" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47409" rel="noreferrer">#47409</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>CLOSED</td>
+                <td>Oct 19, 2026, 09:45 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 19, 2026, 09:45 AM UTC<br><small>Automation App requested alzimmermsft</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>jeremymeng</code></span>
+              <span>1 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Ajeremymeng" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Ajeremymeng" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47158" rel="noreferrer">#47158</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 9, 2026, 06:09 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 9, 2026, 06:09 PM UTC<br><small>Automation App requested jeremymeng</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>jhendrixMSFT</code></span>
+              <span>1 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3AjhendrixMSFT" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3AjhendrixMSFT" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47138" rel="noreferrer">#47138</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>MERGED</td>
+                <td>Oct 9, 2026, 11:20 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 9, 2026, 11:20 PM UTC<br><small>Automation App requested jhendrixMSFT</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>LarryOsterman</code></span>
+              <span>1 direct assignments · 0 valid signoffs · 1 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3ALarryOsterman" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3ALarryOsterman" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47166" rel="noreferrer">#47166</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>OPEN</td>
+                <td>Oct 9, 2026, 08:54 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 9, 2026, 08:54 PM UTC<br><small>Automation App requested LarryOsterman</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>qiaozha</code></span>
+              <span>1 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Aqiaozha" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Aqiaozha" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46654" rel="noreferrer">#46654</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>CLOSED</td>
+                <td>Sep 24, 2026, 10:37 PM UTC<br><small>Label actor unavailable</small></td>
+                <td>Sep 24, 2026, 10:37 PM UTC<br><small>Automation App requested qiaozha</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>weidongxu-microsoft</code></span>
+              <span>1 direct assignments · 0 valid signoffs · 0 open assigned</span>
+            </summary>
+            <div class="evidence-content">
+              <p class="search-links"><a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20user-review-requested%3Aweidongxu-microsoft" rel="noreferrer">Open direct requests</a> · <a href="https://github.com/Azure/azure-rest-api-specs/pulls?q=is%3Apr%20state%3Aopen%20review-requested%3Aweidongxu-microsoft" rel="noreferrer">Open direct and team exposure</a></p>
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Counted evidence</th><th>State</th><th>Review request</th><th>Direct assignment</th><th>Valid signoff</th><th class="number">Request to signoff</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47436" rel="noreferrer">#47436</a></td>
+                <td><span class="evidence-badge verified">Verified: Automation App assignment</span></td>
+                <td>OPEN</td>
+                <td>Oct 20, 2026, 02:47 AM UTC<br><small>Label actor unavailable</small></td>
+                <td>Oct 20, 2026, 02:47 AM UTC<br><small>Automation App requested weidongxu-microsoft</small></td>
+                <td>No signoff by this architect</td>
+                <td class="number">Unavailable</td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
   </section>
 
   <h2>What can be learned</h2>
@@ -299,7 +670,7 @@
       </div>
       <div>
         <h3>Waiting patterns</h3>
-        <p>Assignment-to-signoff timing can identify review paths worth examining, but it includes service-team responses, PR readiness, and review complexity.</p>
+        <p>Request-to-signoff timing can identify review paths worth examining, but it includes service-team responses, PR readiness, and review complexity.</p>
       </div>
       <div>
         <h3>Automation opportunities</h3>
@@ -307,12 +678,12 @@
       </div>
       <div>
         <h3>Evidence limits</h3>
-        <p>GitHub events measure workflow elapsed time, not cognitive effort. Raw events and pull-request identifiers remain outside the public site.</p>
+        <p>GitHub events measure workflow elapsed time, not cognitive effort. This page links the PRs that support displayed counts, but it does not publish raw event payloads, comments, tokens, or private telemetry.</p>
       </div>
     </div>
   </section>
 
-  <footer>Public architect interaction extension. Handles are plain text and do not create GitHub mentions.</footer>
+  <footer>Public architect evidence extension. Handles are plain text and do not create GitHub mentions.</footer>
 </main>
 </body>
 </html>
