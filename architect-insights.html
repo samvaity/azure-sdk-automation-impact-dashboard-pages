@@ -134,9 +134,9 @@
   <h2>Per-architect interaction data</h2>
   <section class="story">
     <p>Automation selection and valid approval are separate events. A valid approval belongs to the person who applied <code>data-plane-review-signoff</code>.</p>
-    <div class="rule"><strong>Automation routing selection:</strong> an individual review request created by <code>azure-sdk-automation</code> within 24 hours of <code>data-plane-review-requested</code>. It measures routing, not completed review work. Team requests, CODEOWNERS, manual requests, and later assignments are not included.</div>
+    <div class="rule"><strong>Automation routing selection:</strong> an individual review request created by <code>azure-sdk-automation</code> within 24 hours of the review entering the queue. It measures routing, not completed review work. Team requests, CODEOWNERS, manual requests, and later assignments are not included.</div>
     <div class="rule"><strong>Valid approval:</strong> a human application of <code>data-plane-review-signoff</code>. An application removed by automation within two minutes is excluded.</div>
-    <div class="rule"><strong>Median request-to-approval:</strong> wall-clock time from <code>data-plane-review-requested</code> to a valid approval.</div>
+    <div class="rule"><strong>Median request-to-approval:</strong> elapsed time from the review entering the queue to a valid approval.</div>
     <div class="table-scroll">
       <table>
         <thead>
