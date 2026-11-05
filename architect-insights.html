@@ -134,7 +134,7 @@
   <h2>Per-architect interaction data</h2>
   <section class="story">
     <p>Automation selection and valid approval are separate events. A valid approval belongs to the person who applied <code>data-plane-review-signoff</code>.</p>
-    <div class="rule"><strong>Automation routing selection:</strong> an individual review request created by <code>azure-sdk-automation</code> within 24 hours of the review entering the queue. It measures routing, not completed review work. Team requests, CODEOWNERS, manual requests, and later assignments are not included.</div>
+    <div class="rule"><strong>Automation routing selection:</strong> an individual review request created by <code>azure-sdk-automation</code> within 24 hours of the review entering the queue. It measures routing, not completed review work. Team, manual, and later requests are shown as context but are not counted as automation routing selections.</div>
     <div class="rule"><strong>Valid approval:</strong> a human application of <code>data-plane-review-signoff</code>. An application removed by automation within two minutes is excluded.</div>
     <div class="rule"><strong>Median request-to-approval:</strong> elapsed time from the review entering the queue to a valid approval.</div>
     <div class="table-scroll">
@@ -224,10 +224,9 @@
 
   <h2>Linked pull-request evidence</h2>
   <section class="story">
-    <p>Expand an architect to view the PRs behind each routing and valid-approval count. A PR may appear under two architects when automation selected one person and another applied the approval. Timeline evidence includes direct and team review requests. <code>azure-sdk-write-*</code> requests are marked as likely CODEOWNERS because GitHub does not record what triggered them.</p>
+    <p>Expand an architect to view the PRs behind each routing and valid-approval count. A PR may appear under two architects when automation selected one person and another applied the approval. Timeline evidence lists observed direct and team review requests without inferring why they were created.</p>
     <div class="confidence-key">
       <span class="evidence-badge verified">Verified: directly observed event</span>
-      <span class="evidence-badge likely">Likely: supported inference, not used for a count</span>
       <span class="evidence-badge unknown">Unknown: the timeline does not prove how the signer joined</span>
     </div>
     <details class="architect-evidence">
@@ -243,7 +242,7 @@
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46738" rel="noreferrer">#46738</a></td>
                 <td>Not selected by automation</td>
                 <td>Sep 25, 2026<br><small>Applied by heaths</small></td>
-                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to heaths</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-keyvault</span><span class="evidence-badge likely">Likely: separate azure-sdk-write-keyvault team request likely came from CODEOWNERS</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to heaths</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-keyvault</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
                 <td>MERGED</td>
                 <td class="number">2.4 hours</td>
                 <td><span class="evidence-badge verified">Verified: valid approval</span></td>
@@ -523,7 +522,7 @@
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47138" rel="noreferrer">#47138</a></td>
                 <td>Oct 9, 2026<br><small>Automation selected jhendrixMSFT</small></td>
                 <td>No valid approval observed</td>
-                <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected jhendrixMSFT</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-contentsafety</span><span class="evidence-badge likely">Likely: separate azure-sdk-write-contentsafety team request likely came from CODEOWNERS</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-eng</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-sync-approvers</span><span class="evidence-badge verified">Verified: PR requested team azure-rest-api-specs-maintainers</span></div></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected jhendrixMSFT</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-contentsafety</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-eng</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-sync-approvers</span><span class="evidence-badge verified">Verified: PR requested team azure-rest-api-specs-maintainers</span></div></td>
                 <td>MERGED</td>
                 <td class="number">Unavailable</td>
                 <td><span class="evidence-badge verified">Verified: Automation routing selection</span></td>
