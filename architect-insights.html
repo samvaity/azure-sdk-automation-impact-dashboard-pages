@@ -113,7 +113,7 @@
 
   <p><a href="index.html">Back to the main impact dashboard</a></p>
 
-  <div class="story-callout"><strong>How to use this view:</strong> compare automation routing with valid approvals and identify review work completed by someone other than the selected architect.</div>
+  <div class="story-callout"><strong>How to use this view:</strong> compare automation routing, GitHub review approvals, and valid approval labels. A GitHub approval does not count as a valid approval unless the signoff label was also applied.</div>
 
   <h2>Observed interaction summary</h2>
   <div class="grid">
@@ -133,37 +133,43 @@
 
   <h2>Per-architect interaction data</h2>
   <section class="story">
-    <p>Automation selection and valid approval are separate events. A valid approval belongs to the person who applied <code>data-plane-review-signoff</code>.</p>
+    <p>Automation selection, GitHub review approval, and valid approval are separate events. A valid approval belongs to the person who applied <code>data-plane-review-signoff</code>.</p>
     <div class="rule"><strong>Automation routing selection:</strong> an individual review request created by <code>azure-sdk-automation</code> within 24 hours of the review entering the queue. It measures routing, not completed review work. Team, manual, and later requests are shown as context but are not counted as automation routing selections.</div>
+    <div class="rule"><strong>GitHub review approvals:</strong> unique pull requests where the handle submitted an <code>APPROVED</code> review. Repeated approvals by the same person on one PR count once.</div>
     <div class="rule"><strong>Valid approval:</strong> a human application of <code>data-plane-review-signoff</code>. An application removed by automation within two minutes is excluded.</div>
-    <div class="rule"><strong>Median request-to-approval:</strong> elapsed time from the review entering the queue to a valid approval.</div>
+    <div class="rule"><strong>Median request-to-valid-approval:</strong> elapsed time from the review entering the queue to a valid approval label.</div>
     <div class="table-scroll">
       <table>
         <thead>
           <tr>
             <th>GitHub handle</th>
             <th class="number">Automation routing selections</th>
-            <th class="number">Valid approvals applied</th>
-            <th class="number">Median request-to-approval</th>
+            <th class="number">GitHub review approvals</th>
+            <th class="number">Valid approval labels applied</th>
+            <th class="number">Median request-to-valid-approval</th>
           </tr>
         </thead>
         <tbody><tr>
       <td><code>heaths</code></td>
       <td class="number">2</td>
+      <td class="number">8</td>
       <td class="number">6</td>
       <td class="number">1.4 days (n=6)</td>
     </tr><tr>
       <td><code>JoshLove-msft</code></td>
       <td class="number">2</td>
+      <td class="number">1</td>
       <td class="number">2</td>
       <td class="number">22.8 minutes (n=2)</td>
     </tr><tr>
       <td><code>kashifkhan</code></td>
       <td class="number">1</td>
       <td class="number">1</td>
+      <td class="number">1</td>
       <td class="number">2.4 minutes (n=1)</td>
     </tr><tr>
       <td><code>samvaity</code></td>
+      <td class="number">0</td>
       <td class="number">0</td>
       <td class="number">1</td>
       <td class="number">14.2 days (n=1)</td>
@@ -171,19 +177,23 @@
       <td><code>JonathanGiles</code></td>
       <td class="number">2</td>
       <td class="number">0</td>
+      <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>tjprescott</code></td>
       <td class="number">2</td>
+      <td class="number">0</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>xirzec</code></td>
       <td class="number">2</td>
       <td class="number">0</td>
+      <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>alzimmermsft</code></td>
+      <td class="number">1</td>
       <td class="number">1</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
@@ -191,9 +201,11 @@
       <td><code>jeremymeng</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
+      <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>jhendrixMSFT</code></td>
+      <td class="number">1</td>
       <td class="number">1</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
@@ -201,24 +213,101 @@
       <td><code>LarryOsterman</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
+      <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>m-nash</code></td>
       <td class="number">1</td>
+      <td class="number">0</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>maorleger</code></td>
       <td class="number">1</td>
       <td class="number">0</td>
+      <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>qiaozha</code></td>
       <td class="number">1</td>
+      <td class="number">3</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
       <td><code>weidongxu-microsoft</code></td>
+      <td class="number">1</td>
+      <td class="number">2</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>acsoylemezoglu</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>efrainretana</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>iwang2</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>lesongjia</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>lilinvictorms</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>lmazuel</code></td>
+      <td class="number">0</td>
+      <td class="number">2</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>prakash-amit</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>radhikajain99</code></td>
+      <td class="number">0</td>
+      <td class="number">2</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>raych1</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>ReneOv-MSFT</code></td>
+      <td class="number">0</td>
+      <td class="number">1</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>seanmcc-msft</code></td>
+      <td class="number">0</td>
+      <td class="number">3</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
+      <td><code>vasanthrajams</code></td>
+      <td class="number">0</td>
       <td class="number">1</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
@@ -237,20 +326,28 @@
     <details class="architect-evidence">
             <summary>
               <span><code>heaths</code></span>
-              <span>2 automation selections · 6 valid approvals · 1 open selections</span>
+              <span>2 automation selections · 8 GitHub approvals · 6 valid approval labels · 1 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46654" rel="noreferrer">#46654</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected qiaozha</span></div></td>
+                <td>CLOSED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46738" rel="noreferrer">#46738</a></td>
                 <td>Not selected by automation</td>
                 <td>Sep 25, 2026<br><small>Applied by heaths</small></td>
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to heaths</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-keyvault</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
                 <td>MERGED</td>
                 <td class="number">2.4 hours</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47018" rel="noreferrer">#47018</a></td>
                 <td>Not selected by automation</td>
@@ -258,7 +355,7 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span><span class="evidence-badge unknown">Unknown: how heaths joined after the team request</span></div></td>
                 <td>MERGED</td>
                 <td class="number">1.4 days</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46862" rel="noreferrer">#46862</a></td>
                 <td>Oct 7, 2026<br><small>Automation selected heaths</small></td>
@@ -274,7 +371,15 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected tjprescott</span><span class="evidence-badge unknown">Unknown: how heaths joined after the team request</span></div></td>
                 <td>MERGED</td>
                 <td class="number">1.4 hours</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47158" rel="noreferrer">#47158</a></td>
+                <td>Not selected by automation</td>
+                <td>Oct 23, 2026<br><small>Applied by samvaity</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected jeremymeng</span></div></td>
+                <td>MERGED</td>
+                <td class="number">14.2 days</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47300" rel="noreferrer">#47300</a></td>
                 <td>Not selected by automation</td>
@@ -282,7 +387,7 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected samvaity</span><span class="evidence-badge unknown">Unknown: how heaths joined after the team request</span></div></td>
                 <td>OPEN</td>
                 <td class="number">7.1 days</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47436" rel="noreferrer">#47436</a></td>
                 <td>Not selected by automation</td>
@@ -290,7 +395,7 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected weidongxu-microsoft</span><span class="evidence-badge unknown">Unknown: how heaths joined after the team request</span></div></td>
                 <td>OPEN</td>
                 <td class="number">1.8 days</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47646" rel="noreferrer">#47646</a></td>
                 <td>Not selected by automation</td>
@@ -298,7 +403,7 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected m-nash</span><span class="evidence-badge unknown">Unknown: how heaths joined after the team request</span></div></td>
                 <td>OPEN</td>
                 <td class="number">2.3 days</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47816" rel="noreferrer">#47816</a></td>
                 <td>Nov 2, 2026<br><small>Automation selected heaths</small></td>
@@ -314,12 +419,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>JoshLove-msft</code></span>
-              <span>2 automation selections · 2 valid approvals · 0 open selections</span>
+              <span>2 automation selections · 1 GitHub approvals · 2 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46693" rel="noreferrer">#46693</a></td>
                 <td>Sep 24, 2026<br><small>Automation selected JoshLove-msft</small></td>
@@ -335,7 +440,7 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to JoshLove-msft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected xirzec</span></div></td>
                 <td>MERGED</td>
                 <td class="number">30.7 minutes</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47341" rel="noreferrer">#47341</a></td>
                 <td>Not selected by automation</td>
@@ -359,12 +464,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>kashifkhan</code></span>
-              <span>1 automation selections · 1 valid approvals · 1 open selections</span>
+              <span>1 automation selections · 1 GitHub approvals · 1 valid approval labels · 1 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47706" rel="noreferrer">#47706</a></td>
                 <td>Not selected by automation</td>
@@ -372,7 +477,7 @@
                 <td><div class="routing-context"><span class="evidence-badge unknown">Unknown: how kashifkhan joined the review</span></div></td>
                 <td>MERGED</td>
                 <td class="number">2.4 minutes</td>
-                <td><span class="evidence-badge verified">Verified: valid approval</span></td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span> <span class="evidence-badge verified">Verified: valid approval</span></td>
               </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47675" rel="noreferrer">#47675</a></td>
                 <td>Oct 29, 2026<br><small>Automation selected kashifkhan</small></td>
@@ -388,12 +493,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>samvaity</code></span>
-              <span>0 automation selections · 1 valid approvals · 0 open selections</span>
+              <span>0 automation selections · 0 GitHub approvals · 1 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47158" rel="noreferrer">#47158</a></td>
                 <td>Not selected by automation</td>
@@ -417,12 +522,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>JonathanGiles</code></span>
-              <span>2 automation selections · 0 valid approvals · 1 open selections</span>
+              <span>2 automation selections · 0 GitHub approvals · 0 valid approval labels · 1 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47018" rel="noreferrer">#47018</a></td>
                 <td>Oct 5, 2026<br><small>Automation selected JonathanGiles</small></td>
@@ -446,12 +551,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>tjprescott</code></span>
-              <span>2 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>2 automation selections · 0 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47112" rel="noreferrer">#47112</a></td>
                 <td>Oct 7, 2026<br><small>Automation selected tjprescott</small></td>
@@ -475,12 +580,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>xirzec</code></span>
-              <span>2 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>2 automation selections · 0 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46776" rel="noreferrer">#46776</a></td>
                 <td>Sep 28, 2026<br><small>Automation selected xirzec</small></td>
@@ -504,12 +609,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>alzimmermsft</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47409" rel="noreferrer">#47409</a></td>
                 <td>Oct 19, 2026<br><small>Automation selected alzimmermsft</small></td>
@@ -518,6 +623,14 @@
                 <td>CLOSED</td>
                 <td class="number">Unavailable</td>
                 <td><span class="evidence-badge verified">Verified: Automation routing selection</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" rel="noreferrer">#44527</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
               </tr></tbody>
                 </table>
               </div>
@@ -525,12 +638,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>jeremymeng</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 0 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47158" rel="noreferrer">#47158</a></td>
                 <td>Oct 9, 2026<br><small>Automation selected jeremymeng</small></td>
@@ -546,12 +659,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>jhendrixMSFT</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47138" rel="noreferrer">#47138</a></td>
                 <td>Oct 9, 2026<br><small>Automation selected jhendrixMSFT</small></td>
@@ -559,7 +672,7 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected jhendrixMSFT</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-contentsafety</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-eng</span><span class="evidence-badge verified">Verified: PR requested team azure-sdk-sync-approvers</span><span class="evidence-badge verified">Verified: PR requested team azure-rest-api-specs-maintainers</span></div></td>
                 <td>MERGED</td>
                 <td class="number">Unavailable</td>
-                <td><span class="evidence-badge verified">Verified: Automation routing selection</span></td>
+                <td><span class="evidence-badge verified">Verified: Automation routing selection</span> <span class="evidence-badge verified">Verified: GitHub review approval</span></td>
               </tr></tbody>
                 </table>
               </div>
@@ -567,12 +680,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>LarryOsterman</code></span>
-              <span>1 automation selections · 0 valid approvals · 1 open selections</span>
+              <span>1 automation selections · 0 GitHub approvals · 0 valid approval labels · 1 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47166" rel="noreferrer">#47166</a></td>
                 <td>Oct 9, 2026<br><small>Automation selected LarryOsterman</small></td>
@@ -588,12 +701,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>m-nash</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 0 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47646" rel="noreferrer">#47646</a></td>
                 <td>Oct 27, 2026<br><small>Automation selected m-nash</small></td>
@@ -609,12 +722,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>maorleger</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 0 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47761" rel="noreferrer">#47761</a></td>
                 <td>Oct 29, 2026<br><small>Automation selected maorleger</small></td>
@@ -630,13 +743,29 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>qiaozha</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 3 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46531" rel="noreferrer">#46531</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to qiaozha</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46546" rel="noreferrer">#46546</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge unknown">Unknown: no reviewer request captured</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46654" rel="noreferrer">#46654</a></td>
                 <td>Sep 24, 2026<br><small>Automation selected qiaozha</small></td>
                 <td>No valid approval label observed</td>
@@ -644,6 +773,14 @@
                 <td>CLOSED</td>
                 <td class="number">Unavailable</td>
                 <td><span class="evidence-badge verified">Verified: Automation routing selection</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47694" rel="noreferrer">#47694</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected tjprescott</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
               </tr></tbody>
                 </table>
               </div>
@@ -651,12 +788,12 @@
           </details><details class="architect-evidence">
             <summary>
               <span><code>weidongxu-microsoft</code></span>
-              <span>1 automation selections · 0 valid approvals · 0 open selections</span>
+              <span>1 automation selections · 2 GitHub approvals · 0 valid approval labels · 0 open selections</span>
             </summary>
             <div class="evidence-content">
               <div class="table-scroll">
                 <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to approval</th><th>Counted evidence</th></tr></thead>
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
                   <tbody><tr>
                 <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47436" rel="noreferrer">#47436</a></td>
                 <td>Oct 20, 2026<br><small>Automation selected weidongxu-microsoft</small></td>
@@ -664,7 +801,299 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected weidongxu-microsoft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
                 <td>OPEN</td>
                 <td class="number">1.8 days</td>
-                <td><span class="evidence-badge verified">Verified: Automation routing selection</span></td>
+                <td><span class="evidence-badge verified">Verified: Automation routing selection</span> <span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" rel="noreferrer">#44527</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>acsoylemezoglu</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47056" rel="noreferrer">#47056</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge unknown">Unknown: no reviewer request captured</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>efrainretana</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47112" rel="noreferrer">#47112</a></td>
+                <td>Not selected by automation</td>
+                <td>Oct 7, 2026<br><small>Applied by heaths</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to efrainretana</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected tjprescott</span></div></td>
+                <td>MERGED</td>
+                <td class="number">1.4 hours</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>iwang2</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" rel="noreferrer">#44527</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to iwang2</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>lesongjia</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47005" rel="noreferrer">#47005</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>lilinvictorms</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" rel="noreferrer">#44527</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>lmazuel</code></span>
+              <span>0 automation selections · 2 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47158" rel="noreferrer">#47158</a></td>
+                <td>Not selected by automation</td>
+                <td>Oct 23, 2026<br><small>Applied by samvaity</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected jeremymeng</span></div></td>
+                <td>MERGED</td>
+                <td class="number">14.2 days</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47761" rel="noreferrer">#47761</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected maorleger</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>prakash-amit</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47646" rel="noreferrer">#47646</a></td>
+                <td>Not selected by automation</td>
+                <td>Oct 29, 2026<br><small>Applied by heaths</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected m-nash</span></div></td>
+                <td>OPEN</td>
+                <td class="number">2.3 days</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>radhikajain99</code></span>
+              <span>0 automation selections · 2 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47018" rel="noreferrer">#47018</a></td>
+                <td>Not selected by automation</td>
+                <td>Oct 6, 2026<br><small>Applied by heaths</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>MERGED</td>
+                <td class="number">1.4 days</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47409" rel="noreferrer">#47409</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected alzimmermsft</span></div></td>
+                <td>CLOSED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>raych1</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47005" rel="noreferrer">#47005</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to raych1</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>ReneOv-MSFT</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" rel="noreferrer">#44527</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>seanmcc-msft</code></span>
+              <span>0 automation selections · 3 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47158" rel="noreferrer">#47158</a></td>
+                <td>Not selected by automation</td>
+                <td>Oct 23, 2026<br><small>Applied by samvaity</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to seanmcc-msft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected jeremymeng</span></div></td>
+                <td>MERGED</td>
+                <td class="number">14.2 days</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47675" rel="noreferrer">#47675</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected kashifkhan</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47761" rel="noreferrer">#47761</a></td>
+                <td>Not selected by automation</td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: direct request to seanmcc-msft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected maorleger</span></div></td>
+                <td>MERGED</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details><details class="architect-evidence">
+            <summary>
+              <span><code>vasanthrajams</code></span>
+              <span>0 automation selections · 1 GitHub approvals · 0 valid approval labels · 0 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/46738" rel="noreferrer">#46738</a></td>
+                <td>Not selected by automation</td>
+                <td>Sep 25, 2026<br><small>Applied by heaths</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-sdk-write-keyvault</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
+                <td>MERGED</td>
+                <td class="number">2.4 hours</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
               </tr></tbody>
                 </table>
               </div>
