@@ -105,8 +105,8 @@
     <h1>Architect Interaction Patterns</h1>
     <div class="subtle">An evidence extension to the Azure SDK Automation impact dashboard.</div>
     <div class="report-meta">
-      <span><strong>Evidence through:</strong> Nov 17, 2026</span>
-      <span><strong>Refreshed:</strong> <time datetime="2026-11-17T22:53:18.459Z">2026-11-17T22:53:18.459Z</time></span>
+      <span><strong>Evidence through:</strong> Nov 18, 2026</span>
+      <span><strong>Refreshed:</strong> <time datetime="2026-11-18T22:36:19.526Z">2026-11-18T22:36:19.526Z</time></span>
       <span><strong>Period:</strong> Cumulative since Sep 22, 2026</span>
     </div>
   </div>
@@ -118,7 +118,7 @@
   <h2>Observed interaction summary</h2>
   <div class="grid">
     <section class="card">
-      <div class="metric">21</div>
+      <div class="metric">22</div>
       <div class="label">automation routing selections</div>
     </section>
     <section class="card">
@@ -126,7 +126,7 @@
       <div class="label">valid approvals applied</div>
     </section>
     <section class="card">
-      <div class="metric">2</div>
+      <div class="metric">3</div>
       <div class="label">open routing selections</div>
     </section>
   </div>
@@ -198,6 +198,12 @@
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr><tr>
+      <td><code>weidongxu-microsoft</code></td>
+      <td class="number">2</td>
+      <td class="number">2</td>
+      <td class="number">0</td>
+      <td class="number">Unavailable (n=0)</td>
+    </tr><tr>
       <td><code>xirzec</code></td>
       <td class="number">2</td>
       <td class="number">0</td>
@@ -225,12 +231,6 @@
       <td><code>qiaozha</code></td>
       <td class="number">1</td>
       <td class="number">3</td>
-      <td class="number">0</td>
-      <td class="number">Unavailable (n=0)</td>
-    </tr><tr>
-      <td><code>weidongxu-microsoft</code></td>
-      <td class="number">1</td>
-      <td class="number">2</td>
       <td class="number">0</td>
       <td class="number">Unavailable (n=0)</td>
     </tr></tbody>
@@ -565,6 +565,43 @@
                 </table>
               </div>
             </div>
+          </details><details class="architect-evidence" data-refresh-key="architect:weidongxu-microsoft">
+            <summary data-refresh-key="summary:weidongxu-microsoft">
+              <span><code>weidongxu-microsoft</code></span>
+              <span>2 automation selections · 2 GitHub approvals · 0 valid approval labels · 1 open selections</span>
+            </summary>
+            <div class="evidence-content">
+              <div class="table-scroll">
+                <table class="evidence-table">
+                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
+                  <tbody><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47436" data-refresh-key="pr:weidongxu-microsoft:47436:2026-10-20T02:47:30Z" rel="noreferrer">#47436</a></td>
+                <td>Oct 20, 2026<br><small>Automation selected weidongxu-microsoft</small></td>
+                <td>Oct 21, 2026<br><small>Applied by heaths</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected weidongxu-microsoft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
+                <td>OPEN</td>
+                <td class="number">1.8 days</td>
+                <td><span class="evidence-badge verified">Verified: Automation routing selection</span> <span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" data-refresh-key="pr:weidongxu-microsoft:44527:2026-10-30T07:02:46Z" rel="noreferrer">#44527</a></td>
+                <td>Not selected by automation</td>
+                <td>Nov 5, 2026<br><small>Applied by alzimmermsft</small></td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
+                <td>MERGED</td>
+                <td class="number">6.3 days</td>
+                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
+              </tr><tr>
+                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/48333" data-refresh-key="pr:weidongxu-microsoft:48333:2026-11-18T10:35:50Z" rel="noreferrer">#48333</a></td>
+                <td>Nov 18, 2026<br><small>Automation selected weidongxu-microsoft</small></td>
+                <td>No valid approval label observed</td>
+                <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected weidongxu-microsoft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
+                <td>OPEN</td>
+                <td class="number">Unavailable</td>
+                <td><span class="evidence-badge verified">Verified: Automation routing selection</span></td>
+              </tr></tbody>
+                </table>
+              </div>
+            </div>
           </details><details class="architect-evidence" data-refresh-key="architect:xirzec">
             <summary data-refresh-key="summary:xirzec">
               <span><code>xirzec</code></span>
@@ -697,35 +734,6 @@
                 <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected tjprescott</span></div></td>
                 <td>MERGED</td>
                 <td class="number">Unavailable</td>
-                <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
-              </tr></tbody>
-                </table>
-              </div>
-            </div>
-          </details><details class="architect-evidence" data-refresh-key="architect:weidongxu-microsoft">
-            <summary data-refresh-key="summary:weidongxu-microsoft">
-              <span><code>weidongxu-microsoft</code></span>
-              <span>1 automation selections · 2 GitHub approvals · 0 valid approval labels · 0 open selections</span>
-            </summary>
-            <div class="evidence-content">
-              <div class="table-scroll">
-                <table class="evidence-table">
-                  <thead><tr><th>PR</th><th>Automation routing selection</th><th>Valid approval label</th><th>Routing context from timeline</th><th>State</th><th class="number">Request to valid approval</th><th>Counted evidence</th></tr></thead>
-                  <tbody><tr>
-                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/47436" data-refresh-key="pr:weidongxu-microsoft:47436:2026-10-20T02:47:30Z" rel="noreferrer">#47436</a></td>
-                <td>Oct 20, 2026<br><small>Automation selected weidongxu-microsoft</small></td>
-                <td>Oct 21, 2026<br><small>Applied by heaths</small></td>
-                <td><div class="routing-context"><span class="evidence-badge verified">Verified: data-plane automation selected weidongxu-microsoft</span><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span></div></td>
-                <td>OPEN</td>
-                <td class="number">1.8 days</td>
-                <td><span class="evidence-badge verified">Verified: Automation routing selection</span> <span class="evidence-badge verified">Verified: GitHub review approval</span></td>
-              </tr><tr>
-                <td><a href="https://github.com/Azure/azure-rest-api-specs/pull/44527" data-refresh-key="pr:weidongxu-microsoft:44527:2026-10-30T07:02:46Z" rel="noreferrer">#44527</a></td>
-                <td>Not selected by automation</td>
-                <td>Nov 5, 2026<br><small>Applied by alzimmermsft</small></td>
-                <td><div class="routing-context"><span class="evidence-badge verified">Verified: PR requested team azure-data-plane-api-reviewers</span><span class="evidence-badge verified">Verified: Automation selected JonathanGiles</span></div></td>
-                <td>MERGED</td>
-                <td class="number">6.3 days</td>
                 <td><span class="evidence-badge verified">Verified: GitHub review approval</span></td>
               </tr></tbody>
                 </table>
