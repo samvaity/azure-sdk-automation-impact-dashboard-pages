@@ -106,7 +106,7 @@
     <div class="subtle">Aggregate report covering data-plane review routing, protected-label enforcement, and package-name approval.</div>
     <div class="report-meta">
       <span><strong>Evidence through:</strong> Nov 24, 2026</span>
-      <span><strong>Refreshed:</strong> <time datetime="2026-11-24T02:14:12.419Z">2026-11-24T02:14:12.419Z</time></span>
+      <span><strong>Refreshed:</strong> <time datetime="2026-11-24T23:54:31.107Z">2026-11-24T23:54:31.107Z</time></span>
       <span><strong>Source:</strong> Azure/azure-rest-api-specs workflow and PR history</span>
       <span><strong>Status:</strong> Ongoing measurement</span>
     </div>
@@ -153,7 +153,7 @@
       </div>
     </div>
     <p class="good">The typical completed routing wait moved from 15.8 hours to 5 seconds.</p>
-    <p><strong>End-to-end review:</strong> 13 of 43 treatment requests reached signoff. 7 remain open; the oldest has been open 48.4 days.</p>
+    <p><strong>End-to-end review:</strong> 13 of 43 treatment requests reached signoff. 7 remain open; the oldest has been open 49.3 days.</p>
     <div class="split">
       <div>
         <h3>Treatment funnel</h3>
@@ -170,7 +170,7 @@
       </div>
       <div>
         <h3>Open architecture-review backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:66.66666666666666%"></div></div><strong>2</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:66.66666666666666%"></div></div><strong>2</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>1</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div></div>
         <p>7 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
       </div>
     </div>
@@ -269,7 +269,7 @@
     <p>How reliably does automation enforce approval policy, and can the legacy baseline survive the move into the Automation App?</p>
     <div class="grid">
       <div class="period"><div class="metric">98.8%</div><div>legacy operational success</div><p>6977 succeeded and 86 failed. Skipped or cancelled runs are not silently treated as failures.</p></div>
-      <div class="period"><div class="metric">1020</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
+      <div class="period"><div class="metric">1043</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
       <div class="period"><div class="metric">109</div><div>unauthorized attempts reversed</div><p>Across 62 pull requests.</p></div>
       <div class="period"><div class="metric">20</div><div>configuration revisions retained</div><p>Workflow first committed Jul 20, 2026.</p></div>
     </div>
@@ -428,24 +428,24 @@
       <thead><tr><th>Workflow component</th><th class="number">Runs</th><th class="number">Successful</th><th class="number">Operational success</th><th class="number">Skipped</th><th class="number">P50 duration</th></tr></thead>
       <tbody><tr>
       <td>analyze</td>
-      <td class="number">3020</td>
-      <td class="number">2877</td>
+      <td class="number">3034</td>
+      <td class="number">2891</td>
       <td class="number">95.3%</td>
       <td class="number">0</td>
       <td class="number">3.0 minutes</td>
     </tr><tr>
       <td>setStatus</td>
-      <td class="number">2874</td>
-      <td class="number">2803</td>
+      <td class="number">2888</td>
+      <td class="number">2816</td>
       <td class="number">97.5%</td>
       <td class="number">0</td>
-      <td class="number">27 seconds</td>
+      <td class="number">26 seconds</td>
     </tr><tr>
       <td>validateLabels</td>
-      <td class="number">8371</td>
+      <td class="number">8422</td>
       <td class="number">4602</td>
       <td class="number">92.4%</td>
-      <td class="number">3393</td>
+      <td class="number">3444</td>
       <td class="number">19 seconds</td>
     </tr></tbody>
     </table>
