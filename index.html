@@ -105,8 +105,8 @@
     <h1>Azure SDK Automation: Process Impact Review</h1>
     <div class="subtle">Aggregate report covering data-plane review routing, protected-label enforcement, and package-name approval.</div>
     <div class="report-meta">
-      <span><strong>Evidence through:</strong> Nov 24, 2026</span>
-      <span><strong>Refreshed:</strong> <time datetime="2026-11-24T23:54:31.107Z">2026-11-24T23:54:31.107Z</time></span>
+      <span><strong>Evidence through:</strong> Nov 25, 2026</span>
+      <span><strong>Refreshed:</strong> <time datetime="2026-11-25T23:38:02.685Z">2026-11-25T23:38:02.685Z</time></span>
       <span><strong>Source:</strong> Azure/azure-rest-api-specs workflow and PR history</span>
       <span><strong>Status:</strong> Ongoing measurement</span>
     </div>
@@ -125,9 +125,9 @@
       <p>6,977 succeeded (98.8% of success/failure outcomes).</p>
     </section>
     <section class="card">
-      <div class="metric">88</div>
+      <div class="metric">91</div>
       <div class="label">new package-name review cycles after activation</div>
-      <p>38 completed; 12 still open.</p>
+      <p>38 completed; 14 still open.</p>
     </section>
   </div>
   <div class="story-callout"><strong>Current assessment:</strong> automation has materially reduced reviewer-routing delay and established measurable controls for approval integrity. End-to-end reviewer effort remains under evaluation through lifecycle metrics and reviewer feedback.</div>
@@ -149,28 +149,28 @@
         <strong>After measured activation</strong>
         <div class="metric">5 seconds</div>
         <div>completed-pair P50</div>
-        <p>31 completed assignments from 44 observed triggers. P95 was 7 seconds.</p>
+        <p>32 completed assignments from 45 observed triggers. P95 was 7 seconds.</p>
       </div>
     </div>
     <p class="good">The typical completed routing wait moved from 15.8 hours to 5 seconds.</p>
-    <p><strong>End-to-end review:</strong> 13 of 43 treatment requests reached signoff. 7 remain open; the oldest has been open 49.3 days.</p>
+    <p><strong>End-to-end review:</strong> 13 of 44 treatment requests reached signoff. 7 remain open; the oldest has been open 50.3 days.</p>
     <div class="split">
       <div>
         <h3>Treatment funnel</h3>
         <div class="funnel"><div class="funnel-row">
-        <div class="funnel-label"><strong>43</strong><span>review requested</span></div>
+        <div class="funnel-label"><strong>44</strong><span>review requested</span></div>
         <div class="track"><div class="fill " style="width:100%"></div></div>
       </div><div class="funnel-row">
-        <div class="funnel-label"><strong>31</strong><span>reviewer team assigned</span></div>
-        <div class="track"><div class="fill " style="width:72.09302325581395%"></div></div>
+        <div class="funnel-label"><strong>32</strong><span>reviewer team assigned</span></div>
+        <div class="track"><div class="fill " style="width:72.72727272727273%"></div></div>
       </div><div class="funnel-row">
         <div class="funnel-label"><strong>13</strong><span>architecture signoff</span></div>
-        <div class="track"><div class="fill complete" style="width:30.23255813953488%"></div></div>
+        <div class="track"><div class="fill complete" style="width:29.545454545454547%"></div></div>
       </div></div>
       </div>
       <div>
         <h3>Open architecture-review backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>1</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>1</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>3</strong></div></div>
         <p>7 requests remain open. This is work still waiting for a completed architecture outcome, not automation failures.</p>
       </div>
     </div>
@@ -180,71 +180,76 @@
     <svg viewBox="0 0 820 300" role="img" aria-label="Weekly architecture-review flow">
       <line x1="48" y1="242" x2="800" y2="242" stroke="#dfe6ee"/><text x="40" y="246" text-anchor="end">0</text><line x1="48" y1="190" x2="800" y2="190" stroke="#dfe6ee"/><text x="40" y="194" text-anchor="end">3</text><line x1="48" y1="138" x2="800" y2="138" stroke="#dfe6ee"/><text x="40" y="142" text-anchor="end">6</text><line x1="48" y1="86" x2="800" y2="86" stroke="#dfe6ee"/><text x="40" y="90" text-anchor="end">8</text><line x1="48" y1="34" x2="800" y2="34" stroke="#dfe6ee"/><text x="40" y="38" text-anchor="end">11</text>
       
-        <rect x="56.41230769230769" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
-        <text x="65.6676923076923" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <rect x="78.92307692307692" y="242" width="18.51076923076923" height="0" rx="3" fill="#107c10"><title>0 completed</title></rect>
-        <text x="88.17846153846153" y="236" text-anchor="middle" class="bar-value">0</text>
-        <text x="76.92307692307692" y="270" text-anchor="middle">Aug 24</text>
-        <rect x="114.25846153846155" y="71.81818181818181" width="18.51076923076923" height="170.1818181818182" rx="3" fill="#0078d4"><title>9 opened</title></rect>
-        <text x="123.51384615384616" y="65.81818181818181" text-anchor="middle" class="bar-value">9</text>
-        <rect x="136.76923076923077" y="223.0909090909091" width="18.51076923076923" height="18.90909090909091" rx="3" fill="#107c10"><title>1 completed</title></rect>
-        <text x="146.0246153846154" y="217.0909090909091" text-anchor="middle" class="bar-value">1</text>
-        <text x="134.76923076923077" y="270" text-anchor="middle">Aug 31</text>
-        <rect x="172.10461538461539" y="52.90909090909091" width="18.51076923076923" height="189.0909090909091" rx="3" fill="#0078d4"><title>10 opened</title></rect>
-        <text x="181.35999999999999" y="46.90909090909091" text-anchor="middle" class="bar-value">10</text>
-        <rect x="194.6153846153846" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
-        <text x="203.87076923076924" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <text x="192.6153846153846" y="270" text-anchor="middle">Sep 7</text>
-        <rect x="229.95076923076925" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
-        <text x="239.20615384615385" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <rect x="252.46153846153848" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
-        <text x="261.7169230769231" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <text x="250.46153846153848" y="270" text-anchor="middle">Sep 14</text>
-        <rect x="287.796923076923" y="34" width="18.51076923076923" height="208" rx="3" fill="#0078d4"><title>11 opened</title></rect>
-        <text x="297.05230769230764" y="28" text-anchor="middle" class="bar-value">11</text>
-        <rect x="310.30769230769226" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
-        <text x="319.5630769230769" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <text x="308.30769230769226" y="270" text-anchor="middle">Sep 21</text>
-        <rect x="345.6430769230769" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#0078d4"><title>2 opened</title></rect>
-        <text x="354.8984615384615" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <rect x="368.15384615384613" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
-        <text x="377.40923076923076" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <text x="366.15384615384613" y="270" text-anchor="middle">Sep 28</text>
-        <rect x="403.48923076923074" y="90.72727272727272" width="18.51076923076923" height="151.27272727272728" rx="3" fill="#0078d4"><title>8 opened</title></rect>
-        <text x="412.7446153846154" y="84.72727272727272" text-anchor="middle" class="bar-value">8</text>
-        <rect x="426" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
-        <text x="435.2553846153846" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <text x="424" y="270" text-anchor="middle">Oct 5</text>
-        <rect x="461.33538461538456" y="166.36363636363637" width="18.51076923076923" height="75.63636363636364" rx="3" fill="#0078d4"><title>4 opened</title></rect>
-        <text x="470.5907692307692" y="160.36363636363637" text-anchor="middle" class="bar-value">4</text>
-        <rect x="483.8461538461538" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
-        <text x="493.10153846153844" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <text x="481.8461538461538" y="270" text-anchor="middle">Oct 12</text>
-        <rect x="519.1815384615385" y="147.45454545454544" width="18.51076923076923" height="94.54545454545455" rx="3" fill="#0078d4"><title>5 opened</title></rect>
-        <text x="528.4369230769231" y="141.45454545454544" text-anchor="middle" class="bar-value">5</text>
-        <rect x="541.6923076923077" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
-        <text x="550.9476923076924" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <text x="539.6923076923077" y="270" text-anchor="middle">Oct 19</text>
-        <rect x="577.0276923076923" y="90.72727272727272" width="18.51076923076923" height="151.27272727272728" rx="3" fill="#0078d4"><title>8 opened</title></rect>
-        <text x="586.2830769230769" y="84.72727272727272" text-anchor="middle" class="bar-value">8</text>
-        <rect x="599.5384615384615" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
-        <text x="608.7938461538462" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <text x="597.5384615384615" y="270" text-anchor="middle">Oct 26</text>
-        <rect x="634.8738461538461" y="204.1818181818182" width="18.51076923076923" height="37.81818181818182" rx="3" fill="#0078d4"><title>2 opened</title></rect>
-        <text x="644.1292307692307" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
-        <rect x="657.3846153846154" y="223.0909090909091" width="18.51076923076923" height="18.90909090909091" rx="3" fill="#107c10"><title>1 completed</title></rect>
-        <text x="666.64" y="217.0909090909091" text-anchor="middle" class="bar-value">1</text>
-        <text x="655.3846153846154" y="270" text-anchor="middle">Nov 2</text>
-        <rect x="692.7199999999999" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
-        <text x="701.9753846153845" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <rect x="715.2307692307692" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
-        <text x="724.4861538461538" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <text x="713.2307692307692" y="270" text-anchor="middle">Nov 9</text>
-        <rect x="750.5661538461538" y="185.27272727272728" width="18.51076923076923" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
-        <text x="759.8215384615385" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
-        <rect x="773.0769230769231" y="242" width="18.51076923076923" height="0" rx="3" fill="#107c10"><title>0 completed</title></rect>
-        <text x="782.3323076923077" y="236" text-anchor="middle" class="bar-value">0</text>
-        <text x="771.0769230769231" y="270" text-anchor="middle">Nov 16</text>
+        <rect x="55.66857142857143" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
+        <text x="64.26285714285714" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <rect x="76.85714285714286" y="242" width="17.18857142857143" height="0" rx="3" fill="#107c10"><title>0 completed</title></rect>
+        <text x="85.45142857142858" y="236" text-anchor="middle" class="bar-value">0</text>
+        <text x="74.85714285714286" y="270" text-anchor="middle">Aug 24</text>
+        <rect x="109.38285714285715" y="71.81818181818181" width="17.18857142857143" height="170.1818181818182" rx="3" fill="#0078d4"><title>9 opened</title></rect>
+        <text x="117.97714285714287" y="65.81818181818181" text-anchor="middle" class="bar-value">9</text>
+        <rect x="130.57142857142858" y="223.0909090909091" width="17.18857142857143" height="18.90909090909091" rx="3" fill="#107c10"><title>1 completed</title></rect>
+        <text x="139.1657142857143" y="217.0909090909091" text-anchor="middle" class="bar-value">1</text>
+        <text x="128.57142857142858" y="270" text-anchor="middle">Aug 31</text>
+        <rect x="163.09714285714287" y="52.90909090909091" width="17.18857142857143" height="189.0909090909091" rx="3" fill="#0078d4"><title>10 opened</title></rect>
+        <text x="171.6914285714286" y="46.90909090909091" text-anchor="middle" class="bar-value">10</text>
+        <rect x="184.2857142857143" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
+        <text x="192.88000000000002" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <text x="182.2857142857143" y="270" text-anchor="middle">Sep 7</text>
+        <rect x="216.81142857142856" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
+        <text x="225.40571428571428" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <rect x="238" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
+        <text x="246.59428571428572" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <text x="236" y="270" text-anchor="middle">Sep 14</text>
+        <rect x="270.5257142857143" y="34" width="17.18857142857143" height="208" rx="3" fill="#0078d4"><title>11 opened</title></rect>
+        <text x="279.12" y="28" text-anchor="middle" class="bar-value">11</text>
+        <rect x="291.7142857142857" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
+        <text x="300.30857142857144" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <text x="289.7142857142857" y="270" text-anchor="middle">Sep 21</text>
+        <rect x="324.23999999999995" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#0078d4"><title>2 opened</title></rect>
+        <text x="332.83428571428567" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <rect x="345.4285714285714" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
+        <text x="354.0228571428571" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <text x="343.4285714285714" y="270" text-anchor="middle">Sep 28</text>
+        <rect x="377.9542857142857" y="90.72727272727272" width="17.18857142857143" height="151.27272727272728" rx="3" fill="#0078d4"><title>8 opened</title></rect>
+        <text x="386.5485714285714" y="84.72727272727272" text-anchor="middle" class="bar-value">8</text>
+        <rect x="399.1428571428571" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
+        <text x="407.7371428571428" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <text x="397.1428571428571" y="270" text-anchor="middle">Oct 5</text>
+        <rect x="431.6685714285714" y="166.36363636363637" width="17.18857142857143" height="75.63636363636364" rx="3" fill="#0078d4"><title>4 opened</title></rect>
+        <text x="440.2628571428571" y="160.36363636363637" text-anchor="middle" class="bar-value">4</text>
+        <rect x="452.85714285714283" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
+        <text x="461.45142857142855" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <text x="450.85714285714283" y="270" text-anchor="middle">Oct 12</text>
+        <rect x="485.3828571428571" y="147.45454545454544" width="17.18857142857143" height="94.54545454545455" rx="3" fill="#0078d4"><title>5 opened</title></rect>
+        <text x="493.97714285714284" y="141.45454545454544" text-anchor="middle" class="bar-value">5</text>
+        <rect x="506.57142857142856" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
+        <text x="515.1657142857142" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <text x="504.57142857142856" y="270" text-anchor="middle">Oct 19</text>
+        <rect x="539.0971428571429" y="90.72727272727272" width="17.18857142857143" height="151.27272727272728" rx="3" fill="#0078d4"><title>8 opened</title></rect>
+        <text x="547.6914285714287" y="84.72727272727272" text-anchor="middle" class="bar-value">8</text>
+        <rect x="560.2857142857143" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#107c10"><title>2 completed</title></rect>
+        <text x="568.88" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <text x="558.2857142857143" y="270" text-anchor="middle">Oct 26</text>
+        <rect x="592.8114285714286" y="204.1818181818182" width="17.18857142857143" height="37.81818181818182" rx="3" fill="#0078d4"><title>2 opened</title></rect>
+        <text x="601.4057142857143" y="198.1818181818182" text-anchor="middle" class="bar-value">2</text>
+        <rect x="614" y="223.0909090909091" width="17.18857142857143" height="18.90909090909091" rx="3" fill="#107c10"><title>1 completed</title></rect>
+        <text x="622.5942857142857" y="217.0909090909091" text-anchor="middle" class="bar-value">1</text>
+        <text x="612" y="270" text-anchor="middle">Nov 2</text>
+        <rect x="646.5257142857143" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
+        <text x="655.1200000000001" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <rect x="667.7142857142858" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#107c10"><title>3 completed</title></rect>
+        <text x="676.3085714285714" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <text x="665.7142857142858" y="270" text-anchor="middle">Nov 9</text>
+        <rect x="700.24" y="185.27272727272728" width="17.18857142857143" height="56.72727272727272" rx="3" fill="#0078d4"><title>3 opened</title></rect>
+        <text x="708.8342857142858" y="179.27272727272728" text-anchor="middle" class="bar-value">3</text>
+        <rect x="721.4285714285714" y="242" width="17.18857142857143" height="0" rx="3" fill="#107c10"><title>0 completed</title></rect>
+        <text x="730.0228571428571" y="236" text-anchor="middle" class="bar-value">0</text>
+        <text x="719.4285714285714" y="270" text-anchor="middle">Nov 16</text>
+        <rect x="753.9542857142858" y="223.0909090909091" width="17.18857142857143" height="18.90909090909091" rx="3" fill="#0078d4"><title>1 opened</title></rect>
+        <text x="762.5485714285716" y="217.0909090909091" text-anchor="middle" class="bar-value">1</text>
+        <rect x="775.1428571428572" y="242" width="17.18857142857143" height="0" rx="3" fill="#107c10"><title>0 completed</title></rect>
+        <text x="783.7371428571429" y="236" text-anchor="middle" class="bar-value">0</text>
+        <text x="773.1428571428572" y="270" text-anchor="middle">Nov 23</text>
       <g class="legend"><rect x="48" y="286" width="12" height="12" fill="#0078d4"/><text x="66" y="296">Opened that week</text><rect x="188" y="286" width="12" height="12" fill="#107c10"/><text x="206" y="296">Completed that week</text></g>
     </svg>
   </figure>
@@ -258,7 +263,7 @@
         <p>Only 11 treatment reviews have a complete request, assignment, and signoff trace. That is not enough to claim architects review faster or save hours.</p>
       </div>
     </div>
-    <p><strong>Evidence basis:</strong> 5 matched assignments before activation and 31 after activation. End-to-end signoff is reported separately from routing latency.</p>
+    <p><strong>Evidence basis:</strong> 5 matched assignments before activation and 32 after activation. End-to-end signoff is reported separately from routing latency.</p>
     <p><strong>Proposed target:</strong> P50 under one minute for eligible PRs, then measure request-to-signoff separately from routing.</p>
   </section>
 
@@ -269,9 +274,9 @@
     <p>How reliably does automation enforce approval policy, and can the legacy baseline survive the move into the Automation App?</p>
     <div class="grid">
       <div class="period"><div class="metric">98.8%</div><div>legacy operational success</div><p>6977 succeeded and 86 failed. Skipped or cancelled runs are not silently treated as failures.</p></div>
-      <div class="period"><div class="metric">1043</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
+      <div class="period"><div class="metric">1058</div><div>protected-label applications</div><p>Evaluated against the configuration active at each event time.</p></div>
       <div class="period"><div class="metric">109</div><div>unauthorized attempts reversed</div><p>Across 62 pull requests.</p></div>
-      <div class="period"><div class="metric">20</div><div>configuration revisions retained</div><p>Workflow first committed Jul 20, 2026.</p></div>
+      <div class="period"><div class="metric">21</div><div>configuration revisions retained</div><p>Workflow first committed Jul 20, 2026.</p></div>
     </div>
     <div class="headline-stat">
       <div class="big">109<small>unauthorized bypass attempts caught</small></div>
@@ -284,7 +289,7 @@
       </div>
       <div>
         <h3>PR outcome after correction</h3>
-        <div class="backlog"><div class="backlog-row"><span>later merged</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>56</strong></div><div class="backlog-row"><span>closed unmerged</span><div class="track"><div class="fill" style="width:3.571428571428571%"></div></div><strong>2</strong></div><div class="backlog-row"><span>still open</span><div class="track"><div class="fill" style="width:7.142857142857142%"></div></div><strong>4</strong></div></div>
+        <div class="backlog"><div class="backlog-row"><span>later merged</span><div class="track"><div class="fill" style="width:100%"></div></div><strong>56</strong></div><div class="backlog-row"><span>closed unmerged</span><div class="track"><div class="fill" style="width:5.357142857142857%"></div></div><strong>3</strong></div><div class="backlog-row"><span>still open</span><div class="track"><div class="fill" style="width:5.357142857142857%"></div></div><strong>3</strong></div></div>
       </div>
     </div>
     <h3>Flagged attempts, month over month</h3>
@@ -304,29 +309,29 @@
     <p>How much review demand enters the process, how quickly does it finish, and how much old work was already waiting when the current workflow set became active?</p>
     <div class="grid">
       <div class="period"><div class="metric">17</div><div>observed carryover reviews at activation</div><p>2 later completed; 0 remain open.</p></div>
-      <div class="period"><div class="metric">88</div><div>new reviews after activation</div><p>38 completed; 12 are actively open.</p></div>
+      <div class="period"><div class="metric">91</div><div>new reviews after activation</div><p>38 completed; 14 are actively open.</p></div>
       <div class="period"><div class="metric">1.9 days</div><div>new-review P50 to full approval</div><p>Open reviews are excluded from this percentile and remain in backlog.</p></div>
       <div class="period"><div class="metric">11</div><div>observed unauthorized corrections</div><p>Derived only from durable warning evidence.</p></div>
     </div>
     <h3>How quickly the new cohort reaches full approval</h3>
-    <div class="target-grid"><div class="target-card"><strong>15.9%</strong><span>completed within 1d</span><small>14 of 88 new reviews</small></div><div class="target-card"><strong>25.0%</strong><span>completed within 3d</span><small>22 of 88 new reviews</small></div><div class="target-card"><strong>27.3%</strong><span>completed within 5d</span><small>24 of 88 new reviews</small></div></div>
+    <div class="target-grid"><div class="target-card"><strong>15.4%</strong><span>completed within 1d</span><small>14 of 91 new reviews</small></div><div class="target-card"><strong>24.2%</strong><span>completed within 3d</span><small>22 of 91 new reviews</small></div><div class="target-card"><strong>26.4%</strong><span>completed within 5d</span><small>24 of 91 new reviews</small></div></div>
     <div class="split">
       <div>
         <h3>Open package-name backlog</h3>
-        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:22.22222222222222%"></div></div><strong>2</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>9</strong></div></div>
-        <p>12 new review cycles are on PRs that are still open. 9 have been open longer than 14 days.</p>
+        <div class="backlog"><div class="backlog-row"><span><1 day</span><div class="track"><div class="fill backlog-fill" style="width:33.33333333333333%"></div></div><strong>3</strong></div><div class="backlog-row"><span>1-3 days</span><div class="track"><div class="fill backlog-fill" style="width:0%"></div></div><strong>0</strong></div><div class="backlog-row"><span>3-7 days</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>7-14 days</span><div class="track"><div class="fill backlog-fill" style="width:11.11111111111111%"></div></div><strong>1</strong></div><div class="backlog-row"><span>>14 days</span><div class="track"><div class="fill backlog-fill" style="width:100%"></div></div><strong>9</strong></div></div>
+        <p>14 new review cycles are on PRs that are still open. 9 have been open longer than 14 days.</p>
       </div>
       <div>
         <h3>Process funnel</h3>
         <div class="funnel"><div class="funnel-row">
-        <div class="funnel-label"><strong>88</strong><span>new review cycles</span></div>
+        <div class="funnel-label"><strong>91</strong><span>new review cycles</span></div>
         <div class="track"><div class="fill " style="width:100%"></div></div>
       </div><div class="funnel-row">
         <div class="funnel-label"><strong>38</strong><span>fully approved</span></div>
-        <div class="track"><div class="fill complete" style="width:43.18181818181818%"></div></div>
+        <div class="track"><div class="fill complete" style="width:41.75824175824176%"></div></div>
       </div><div class="funnel-row">
         <div class="funnel-label"><strong>24</strong><span>approved within 5 days</span></div>
-        <div class="track"><div class="fill complete" style="width:27.27272727272727%"></div></div>
+        <div class="track"><div class="fill complete" style="width:26.373626373626376%"></div></div>
       </div></div>
       </div>
     </div>
@@ -416,8 +421,8 @@
         <rect x="735.6470588235294" y="158.8" width="14.15529411764706" height="83.2" rx="3" fill="#107c10"><title>4 completed</title></rect>
         <text x="742.724705882353" y="152.8" text-anchor="middle" class="bar-value">4</text>
         <text x="733.6470588235294" y="270" text-anchor="middle">Nov 16</text>
-        <rect x="761.7270588235294" y="221.2" width="14.15529411764706" height="20.8" rx="3" fill="#0078d4"><title>1 opened</title></rect>
-        <text x="768.8047058823529" y="215.2" text-anchor="middle" class="bar-value">1</text>
+        <rect x="761.7270588235294" y="158.8" width="14.15529411764706" height="83.2" rx="3" fill="#0078d4"><title>4 opened</title></rect>
+        <text x="768.8047058823529" y="152.8" text-anchor="middle" class="bar-value">4</text>
         <rect x="779.8823529411765" y="221.2" width="14.15529411764706" height="20.8" rx="3" fill="#107c10"><title>1 completed</title></rect>
         <text x="786.96" y="215.2" text-anchor="middle" class="bar-value">1</text>
         <text x="777.8823529411765" y="270" text-anchor="middle">Nov 23</text>
@@ -428,24 +433,24 @@
       <thead><tr><th>Workflow component</th><th class="number">Runs</th><th class="number">Successful</th><th class="number">Operational success</th><th class="number">Skipped</th><th class="number">P50 duration</th></tr></thead>
       <tbody><tr>
       <td>analyze</td>
-      <td class="number">3034</td>
-      <td class="number">2891</td>
-      <td class="number">95.3%</td>
+      <td class="number">3055</td>
+      <td class="number">2912</td>
+      <td class="number">95.4%</td>
       <td class="number">0</td>
       <td class="number">3.0 minutes</td>
     </tr><tr>
       <td>setStatus</td>
-      <td class="number">2888</td>
-      <td class="number">2816</td>
+      <td class="number">2909</td>
+      <td class="number">2837</td>
       <td class="number">97.5%</td>
       <td class="number">0</td>
       <td class="number">26 seconds</td>
     </tr><tr>
       <td>validateLabels</td>
-      <td class="number">8422</td>
+      <td class="number">8475</td>
       <td class="number">4602</td>
       <td class="number">92.4%</td>
-      <td class="number">3444</td>
+      <td class="number">3497</td>
       <td class="number">19 seconds</td>
     </tr></tbody>
     </table>
